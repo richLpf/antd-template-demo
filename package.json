@@ -23,6 +23,12 @@
       "react-app/jest"
     ]
   },
+  "stylelint": {
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "color-hex-case": "lower"
+    }
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -34,5 +40,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^22.0.0"
   }
 }

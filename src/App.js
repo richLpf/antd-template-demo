@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import UTable from "./components/UTable"
 
 function App() {
+
+
+  const Reviw = "this word is spelt wrong"
+
+  const Review = "this is ok"
+
+  const reviewCode = "two words"
+
+  const errode = "I want write errCode"
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        基于React和Antd的中后台模版项目
+        <div>
+          
+        </div>
     </div>
   );
 }
