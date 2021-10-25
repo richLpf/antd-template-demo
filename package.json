@@ -53,7 +53,9 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "hooks": {
-    "pre-commit": "npm test && npm run foo"
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test && npm run foo"
+    }
   }
 }
