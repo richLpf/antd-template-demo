@@ -1,25 +1,21 @@
-import './App.css';
-import UTable from "./components/UTable"
+import "./App.css";
+import UTable from "./components/UTable";
 
 function App() {
+  const Reviw = "this word is spelt wrong";
 
+  const Review = "this is ok";
 
-  const Reviw = "this word is spelt wrong"
+  const reviewCode = "two words";
 
-  const Review = "this is ok"
+  const errode = "I want write errCode";
 
-  const reviewCode = "two words"
-
-  const errode = "I want write errCode"
-
-  console.log("errCode111", errode)
+  console.log("errCode1", errode);
 
   return (
     <div className="App">
-        基于React和Antd的中后台模版项目
-        <div>
-          
-        </div>
+      基于React和Antd的中后台模版项目
+      <div></div>
     </div>
   );
 }

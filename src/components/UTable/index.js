@@ -3,14 +3,12 @@
  * @LastModifiedBy: pengfei.lv
  * @LastEditTime: 2021-10-19 00:16:27
  * @LastEditors: pengfei.lv
- * @Description: 
+ * @Description:
  */
-import React from 'react'
+import React from "react";
 
-function UTable(){
-    return <div>
-
-    </div>
+function UTable() {
+  return <div></div>;
 }
 
-export default UTable
+export default UTable;
