@@ -12,7 +12,7 @@ function App() {
 
   const errode = "I want write errCode"
 
-  console.log("errCode", errode)
+  console.log("errCode111", errode)
 
   return (
     <div className="App">
