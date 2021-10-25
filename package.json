@@ -42,6 +42,7 @@
     ]
   },
   "devDependencies": {
+    "commitizen": "^4.2.4",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0"
   }
