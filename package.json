@@ -1,6 +1,6 @@
 {
   "name": "antd-template-project",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
@@ -17,17 +17,17 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prepare": "husky install",
-    "commit": "cz",
-    "prettier": "prettier --parser --write ./src/**/*.js"
+    "prettier": "prettier --parser --write ./src/**/*.js",
+    "log": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ],
-    "rules": {       	
+    "rules": {
       "eqeqeq": 0
-    } 
+    }
   },
   "stylelint": {
     "extends": "stylelint-config-standard",
