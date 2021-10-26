@@ -1,16 +1,12 @@
 import "./App.css";
-import UTable from "./components/UTable";
 
 function App() {
-  const Reviw = "this word is spelt wrong";
-
-  const Review = "this is ok";
-
-  const reviewCode = "two words";
-
-  const errode = "I want write errCode";
-
-  console.log("errCode1", errode);
+  var a = 1;
+  var b = 2;
+  if (a == b) {
+    return true;
+  }
+  console.log("a", a);
 
   return (
     <div className="App">

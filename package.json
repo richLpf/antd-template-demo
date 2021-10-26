@@ -17,13 +17,17 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prepare": "husky install",
+    "commit": "cz",
     "prettier": "prettier --parser --write ./src/**/*.js"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {       	
+      "eqeqeq": 0
+    } 
   },
   "stylelint": {
     "extends": "stylelint-config-standard",
@@ -57,11 +61,6 @@
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn prettier"
     }
   }
 }
