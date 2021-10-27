@@ -18,7 +18,7 @@
     "eject": "react-scripts eject",
     "prepare": "husky install",
     "prettier": "prettier --parser --write ./src/**/*.js",
-    "log": "conventional-changelog -p angular -i CHANGELOG.md -s"
+    "logs": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "eslintConfig": {
     "extends": [
