@@ -16,7 +16,7 @@ stages:
 
 code-check:
   tags:
-    - uaek-c1
+    - test
   stage: check
   script:
     - echo "code-check start"
@@ -29,7 +29,7 @@ code-check:
 
 css-check:
   tags:
-    - uaek-c1
+    - test
   stage: check
   script:
     - echo "css check"
@@ -42,7 +42,7 @@ css-check:
 
 node-build:
   tags:
-    - uaek-c1
+    - test
   stage: build
   # 请使用 KUN Kaniko 镜像，该 Image 在官方镜像基础上，添加了 busybox，这样才能和 gitlab 联动起来
   image: hub.ucloudadmin.com/uaek/uaek-kaniko-executor:latest
