@@ -1,0 +1,59 @@
+variables:
+  IMAGE_NAME: 'hub.ucloudadmin.com/front-project/antd-template-project'
+  ROOT_DIR: /data
+
+before_script:
+  - echo "this is .gitlab-ci.yml $CI_PIPELINE_SOURCE $CI_COMMIT_TAG, $CI_COMMIT_BRANCH"
+  - echo "VARIABLE CI_COMMIT_SHA IS $CI_COMMIT_SHA!"
+  - echo "VARIABLE CI_COMMIT_TAG IS $CI_COMMIT_TAG!"
+  - echo "VARIABLE CI_PROJECT_DIR IS $CI_PROJECT_DIR!"
+
+stages:
+  - check
+  - build
+  - after-build
+  - deploy
+
+code-check:
+  stage: check
+  script:
+    - echo "code-check start"
+  only:
+    refs:
+      - /^feature-.*$/
+      - /^feature\/.*$/
+      - dev
+      - master
+
+css-check:
+  stage: check
+  script:
+    - echo "css check"
+  only:
+    refs:
+      - /^feature-.*$/
+      - /^feature\/.*$/
+      - dev
+      - master
+
+node-build:
+  tags:
+    - test
+  stage: build
+  # 请使用 KUN Kaniko 镜像，该 Image 在官方镜像基础上，添加了 busybox，这样才能和 gitlab 联动起来
+  image: hub.ucloudadmin.com/uaek/uaek-kaniko-executor:latest
+  script:
+    # 首先我们需要为我们的镜像生成一个 tag，规则是：如果有 git tag，就使用 git tag，如果没有的话，就使用 git commit sha
+    - IMAGE_TAG=$CI_COMMIT_SHA && if [[ -n "$CI_COMMIT_TAG" ]]; then IMAGE_TAG=$CI_COMMIT_TAG ; fi
+    # master分支明确提交了一个tag,镜像推到正式环境下
+    - PRE_IMAGE_NAME_URL=$CI_COMMIT_SHA && if [[ -n "$CI_COMMIT_TAG" ]]; then PRE_IMAGE_NAME_URL=$IMAGE_NAME ; else PRE_IMAGE_NAME_URL=$IMAGE_NAME; fi
+    - echo $PRE_IMAGE_NAME_URL:$IMAGE_TAG
+    - /kaniko/executor -c $CI_PROJECT_DIR -f Dockerfile -d $PRE_IMAGE_NAME_URL:$IMAGE_TAG
+  # 使用 only 来限制这个 job 什么情况下会运行，下面的设置标识只有在 dev 分支发生变化，或者新的 tag 被创建时才会运行。
+  only:
+    refs:
+      - /^feature-.*$/
+      - /^feature\/.*$/
+      - dev
+      - master
+

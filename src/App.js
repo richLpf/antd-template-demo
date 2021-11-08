@@ -1,17 +1,19 @@
 import "./App.css";
+import zhCN from "antd/lib/locale/zh_CN";
+import { ConfigProvider } from "antd";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import TableDemo from "./pages/table";
 
 function App() {
-  var a = 1;
-  var b = 2;
-  if (a == b) {
-    return true;
-  }
-  console.log("a", a);
-
   return (
-    <div className="App">
-      基于React和Antd的中后台模版项目
-      <div></div>
+    <div className="App" style={{ padding: 20 }}>
+      <ConfigProvider locale={zhCN}>
+        <Router>
+          <Routes>
+            <Route path="/" element={<TableDemo />} />
+          </Routes>
+        </Router>
+      </ConfigProvider>
     </div>
   );
 }
