@@ -1,11 +1,29 @@
-FROM nginx:1.19.1
+FROM node:10-alpine as builder
 
-WORKDIR /data
+WORKDIR /data/front
 
-ADD build build
+COPY . .
 
-COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+RUN cat /etc/hosts
+
+# RUN npm install @ucloud/ucloud-icons --registry=http://registry.npm.pre.ucloudadmin.com --no-package-lock --no-save
+
+RUN npm install --registry=https://registry.npm.taobao.org --no-package-lock --no-save
+
+RUN yarn build
+
+
+
+
+FROM nginx:alpine as front
+
+RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    && echo "Asia/Shanghai" > /etc/timezone 
+
+WORKDIR /data/front
+
+COPY ./nginx /etc/nginx/conf.d
+
+COPY  --from=builder /data/front/build /data/front
 
 EXPOSE 80
-
-CMD ["nginx"]
