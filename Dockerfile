@@ -1,4 +1,4 @@
-FROM node:12-alpine as builder
+FROM node:12.13.0 as builder
 
 WORKDIR /data/front
 
@@ -8,7 +8,7 @@ RUN cat /etc/hosts
 
 # RUN npm install @ucloud/ucloud-icons --registry=http://registry.npm.pre.ucloudadmin.com --no-package-lock --no-save
 
-RUN npm install --registry=https://registry.npm.taobao.org --no-package-lock --no-save
+RUN npm install --no-optional --registry=https://registry.npm.taobao.org --no-package-lock --no-save
 
 RUN yarn build
 

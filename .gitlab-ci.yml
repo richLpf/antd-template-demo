@@ -10,9 +10,6 @@ cache:
 
 before_script:
   - echo "this is .gitlab-ci.yml $CI_PIPELINE_SOURCE $CI_COMMIT_TAG, $CI_COMMIT_BRANCH"
-  - echo "VARIABLE CI_COMMIT_SHA IS $CI_COMMIT_SHA!"
-  - echo "VARIABLE CI_COMMIT_TAG IS $CI_COMMIT_TAG!"
-  - echo "VARIABLE CI_PROJECT_DIR IS $CI_PROJECT_DIR!"
 
 stages:
   - check
