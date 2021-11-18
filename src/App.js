@@ -1,18 +1,20 @@
 import "./App.css";
 import zhCN from "antd/lib/locale/zh_CN";
 import { ConfigProvider } from "antd";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import TableDemo from "./pages/table";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import BaseLayout from "./BaseLayout";
+import Login from "./pages/login"
 
 function App() {
   return (
-    <div className="App" style={{ padding: 20 }}>
+    <div className="App">
       <ConfigProvider locale={zhCN}>
-        <Router>
+        <BrowserRouter>
           <Routes>
-            <Route path="/" element={<TableDemo />} />
+            <Route path="login" element={<Login />} />
+            <Route path="*" element={<BaseLayout />} />
           </Routes>
-        </Router>
+        </BrowserRouter>
       </ConfigProvider>
     </div>
   );

@@ -1,11 +1,11 @@
-@import '~antd/dist/antd.css';
-
-.App {
-  text-align: center;
-}
+@import "~antd/dist/antd.css";
 
 .css {
   color: #fff;
+}
+
+* {
+  font-family: "pingfang SC, helvetica neue,arial, hiragino sans gb,microsoft yahei ui,microsoft yahei,simsun, sans-serif";
 }
 
 .App-logo {
@@ -42,4 +42,90 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.logo {
+  height: 28px;
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  line-height: 28px;
+}
+
+.phone-style {
+  width: 337.5px;
+  height: 675px;
+  background-size: 100% 100%;
+}
+
+.dynamic-delete-button {
+  position: relative;
+  top: 4px;
+  margin: 0 8px;
+  color: #999;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.dynamic-delete-button:hover {
+  color: #777;
+}
+
+.dynamic-delete-button[disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+#components-form-demo-form-context .user {
+  margin-bottom: 8px;
+}
+
+#components-form-demo-form-context .user .ant-avatar {
+  margin-right: 8px;
+}
+
+.ant-row-rtl #components-form-demo-form-context .user .ant-avatar {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+.button-box .button-hover {
+  margin: 8px 0;
+}
+
+.button-box .button-delete {
+  display: none;
+}
+
+.button-box .button-hover:hover .button-delete {
+  display: block;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 97, 97, 0.5);
+  outline-offset: -2px;
+  border: 1px solid hsla(0, 0%, 100%, 0.3);
+  width: 6px;
+  height: 6px;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: transparent;
+  border-radius: 6px;
+}
+
+.code-png {
+  width: 75px;
+  display: inline-block;
 }
