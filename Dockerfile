@@ -8,7 +8,7 @@ RUN cat /etc/hosts
 
 # RUN npm install @ucloud/ucloud-icons --registry=http://registry.npm.pre.ucloudadmin.com --no-package-lock --no-save
 
-RUN cache clean --force
+RUN npm cache clean --force
 
 RUN npm install --no-optional --registry=https://registry.npm.taobao.org --no-package-lock --no-save
 
