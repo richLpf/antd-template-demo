@@ -1,12 +1,5 @@
-/*
- * @Author: pengfei.lv
- * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-07 12:48:23
- * @LastEditors: pengfei.lv
- * @Description:
- */
 import React from "react";
-import { Table, Tag, Space } from "antd";
+import { Table, Tag, Space, Button } from "antd";
 
 function TableGroup() {
   const { Column, ColumnGroup } = Table;
@@ -65,8 +58,8 @@ function TableGroup() {
         key="action"
         render={(text, record) => (
           <Space size="middle">
-            <a>Invite {record.lastName}</a>
-            <a>Delete</a>
+            <Button type="link">Invite {record.lastName}</Button>
+            <Button type="link">Delete</Button>
           </Space>
         )}
       />

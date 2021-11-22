@@ -1,7 +1,7 @@
 /*
  * @Author: pengfei.lv
  * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-19 17:00:05
+ * @LastEditTime: 2021-11-22 18:11:31
  * @LastEditors: pengfei.lv
  * @Description:
  */
@@ -12,6 +12,8 @@ import {
   CloudUploadOutlined,
   FolderAddOutlined,
   MessageOutlined,
+  TableOutlined,
+  FireOutlined
 } from "@ant-design/icons";
 
 const Dashboard = lazy(() => import("../pages/dashboard"));
@@ -20,6 +22,8 @@ const Template = lazy(() => import("../pages/template"));
 const CreateTemplate = lazy(() => import("../pages/template/create-form"));
 const Message = lazy(() => import("../pages/message/send-task"));
 const Business = lazy(() => import("../pages/business"));
+const Table = lazy(() => import('../pages/table'))
+const Widget = lazy(() => import('../pages/widgets'))
 
 const routes = [
   {
@@ -31,12 +35,14 @@ const routes = [
   {
     name: "素材管理",
     key: "/fodder",
+    hidden: true,
     icon: <CloudUploadOutlined />,
     component: <Dodder />,
   },
   {
     name: "模版管理",
     key: "/template",
+    hidden: true,
     icon: <FolderAddOutlined />,
     component: <Template />,
   },
@@ -49,6 +55,7 @@ const routes = [
   {
     name: "消息管理",
     key: "/message",
+    hidden: true,
     icon: <MessageOutlined />,
     children: [
       {
@@ -59,8 +66,36 @@ const routes = [
     ],
   },
   {
-    name: "业务管理",
+    name: "功能组件",
+    key: "/widget",
+    hidden: false,
+    icon: <FireOutlined />,
+    component: <Widget />,
+  },
+  {
+    name: "表格组件",
+    key: "/table",
+    hidden: false,
+    icon: <TableOutlined />,
+    component: <Table />,
+  },
+  {
+    name: "表单组件",
+    key: "/form",
+    hidden: false,
+    icon: <SettingOutlined />,
+    component: <Business />,
+  },
+  {
+    name: "业务组件合集",
     key: "/business",
+    hidden: true,
+    icon: <SettingOutlined />,
+    component: <Business />,
+  },
+  {
+    name: "常见功能组件",
+    key: "/component",
     hidden: true,
     icon: <SettingOutlined />,
     component: <Business />,

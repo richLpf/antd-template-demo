@@ -6,6 +6,7 @@ import BaseLayout from "./BaseLayout";
 import Login from "./pages/login"
 
 function App() {
+  console.log("process.on", process.env.REACT_APP_ENV)
   return (
     <div className="App">
       <ConfigProvider locale={zhCN}>

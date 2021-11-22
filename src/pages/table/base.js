@@ -37,7 +37,7 @@ function TableBase() {
 
   return (
     <Fragment>
-      <Table dataSource={dataSource} columns={columns} />;
+      <Table dataSource={dataSource} columns={columns} />
     </Fragment>
   );
 }

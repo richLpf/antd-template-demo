@@ -1,7 +1,7 @@
 /*
  * @Author: pengfei.lv
  * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-19 17:06:41
+ * @LastEditTime: 2021-11-22 17:38:24
  * @LastEditors: pengfei.lv
  * @Description:
  */
@@ -95,7 +95,7 @@ function BaseLayout() {
     <Layout style={{ minHeight: "100vh" }}>
       <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
         <div className="logo" style={{ textAlign: "center", borderRadius: 5 }}>
-          5G
+          Antd Demo
         </div>
         <Menu
           theme="dark"
