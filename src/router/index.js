@@ -13,7 +13,7 @@ import {
   FolderAddOutlined,
   MessageOutlined,
   TableOutlined,
-  FireOutlined
+  FireOutlined,
 } from "@ant-design/icons";
 
 const Dashboard = lazy(() => import("../pages/dashboard"));
@@ -22,8 +22,8 @@ const Template = lazy(() => import("../pages/template"));
 const CreateTemplate = lazy(() => import("../pages/template/create-form"));
 const Message = lazy(() => import("../pages/message/send-task"));
 const Business = lazy(() => import("../pages/business"));
-const Table = lazy(() => import('../pages/table'))
-const Widget = lazy(() => import('../pages/widgets'))
+const Table = lazy(() => import("../pages/table"));
+const Widget = lazy(() => import("../pages/widgets"));
 
 const routes = [
   {
