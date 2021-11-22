@@ -1,62 +1,67 @@
-import React, { Fragment } from "react";
-import { Pagination, Card, Row, Col, Button } from "antd";
+import React, { Fragment, useState } from "react";
+import { Card, Button } from "antd";
 // import { SearchOutlined } from "@ant-design/icons"
-import TableFilter from "../../components/TableFilter";
+import TableFilter, { resetObjectSelect } from "../../components/TableFilter";
+import AddForm from "./modal/addForm"
+import { fodderCheckType, fodderType } from "../../utils/const"
+import List from "./list"
 
-const { Meta } = Card;
 
 function Fodder() {
+  
+  const [visible, setVisible] = useState(false)
+  const [confirmLoading, ] = useState(false)
+
   const onSearch = () => {};
 
   const filterFields = [
     {
-      label: "关键字",
-      key: "AppId",
-      type: "Input",
+      label: "文件分类",
+      key: "FileType",
+      type: "Select",
+      options: resetObjectSelect(fodderType)
     },
+    {
+      label: "审核状态",
+      key: "Status",
+      type: "Select",
+      options: resetObjectSelect(fodderCheckType)
+    }
   ];
+
+  const handleAdd = () => {
+    setVisible(true)
+  }
+
+  const handleOk = () => {
+
+  }
+
+  const handleSelect = () => {
+    
+  }
 
   return (
     <Fragment>
-      <Card
-        title={
-          <TableFilter
+      <Card size="small" style={{marginBottom: 10, paddingTop: 10, paddingLeft: 10, paddingRight: 10}}>
+        <TableFilter
             onSearch={onSearch}
             leftActions={[
-              <Button size="small" type="primary">
+              <Button size="small" type="primary" onClick={handleAdd}>
                 新增
               </Button>,
             ]}
             fields={filterFields}
             rowCount={3}
           />
-        }
-        style={{ textAlign: "left" }}
-      >
-        <Row gutter={16}>
-          {[1, 2, 2, 3, 3, 4, 5, 6].map((item, index) => {
-            return (
-              <Col span={4} key={index} style={{ marginBottom: 10 }}>
-                <Card
-                  cover={
-                    <img
-                      alt="example"
-                      src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                    />
-                  }
-                >
-                  <Meta title="Card title" />
-                </Card>
-              </Col>
-            );
-          })}
-        </Row>
       </Card>
-      <Pagination
-        style={{ textAlign: "right", marginTop: 20 }}
-        defaultCurrent={1}
-        total={50}
-      />
+      <List handleSelect={handleSelect} />
+      {visible?<AddForm 
+        visible={visible}
+        setVisible={setVisible}
+        confirmLoading={confirmLoading}
+        handleOk={handleOk}
+      />:null}
     </Fragment>
   );
 }

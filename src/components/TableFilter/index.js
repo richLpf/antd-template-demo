@@ -3,6 +3,11 @@ import { Form, Button, Col, Row } from "antd";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
 import FormItemComponent from "../Form/FormItemComponent.js";
 
+
+export const resetObjectSelect = (object) => {
+  return Object.keys(object).map(item => ({label: object[item], value: item}))
+}
+
 /**
  * 表格过滤器封装
  * @param fields 过滤器配置

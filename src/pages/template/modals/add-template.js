@@ -1,64 +1,22 @@
 /*
  * @Author: pengfei.lv
  * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-18 13:54:37
+ * @LastEditTime: 2021-11-19 18:06:12
  * @LastEditors: pengfei.lv
  * @Description:
  */
 
 import React, { Fragment, useState } from "react";
-import { Form, Input, Button, Row, Col, Select } from "antd";
+import { Form, Input, Button, Row, Col, Select, Drawer } from "antd";
 import CardItem from "./card-item";
 import UploadBox from "../../../components/upload";
 import MessageBack from "../../../components/MessageBack";
 import BoxButton from "../../../components/BoxButton";
+import FodderList from "../../fodder/list"
+import { formItemLayout, categoryList, templateTypeList } from "../../../utils/const"
 
 const { Option } = Select;
-
-const formItemLayout = {
-  labelCol: {
-    xs: { span: 24 },
-    sm: { span: 3 },
-  },
-  wrapperCol: {
-    xs: { span: 24 },
-    sm: { span: 16 },
-  },
-};
-
-const categoryList = [
-  {
-    label: "游戏",
-    value: "1",
-  },
-  {
-    label: "汽车",
-    value: "2",
-  },
-  {
-    label: "物流",
-    value: "3",
-  },
-];
-
-const templateTypeList = [
-  {
-    label: "单卡",
-    value: "1",
-  },
-  {
-    label: "多卡",
-    value: "2",
-  },
-  {
-    label: "文件",
-    value: "3",
-  },
-  {
-    label: "文本",
-    value: "4",
-  },
-];
+const { TextArea } = Input
 
 function AddTemplate(props) {
   const { callback, footerButton } = props;
@@ -73,19 +31,31 @@ function AddTemplate(props) {
         title: `卡片1`,
         media: {
           name: "",
-          url: "",
+          url: "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?",
           type: "img",
         },
         height: 1,
         desc: "卡片信息描述内容",
         buttonList: [],
-      },
+      }
     ],
     backMessage: false,
   };
 
   const [formData, setFormData] = useState(initialValues);
-  const [cardList, setCardList] = useState([]);
+  const [cardList, setCardList] = useState([{
+    title: `卡片1`,
+    media: {
+      name: "",
+      url: "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?",
+      type: "img",
+    },
+    height: 1,
+    desc: "卡片信息描述内容",
+    buttonList: [],
+  }]);
+
+  const [fodderVisible, setFodderVisible] = useState(false)
 
   const onFinish = (values) => {
     setFormData({ ...values });
@@ -107,6 +77,16 @@ function AddTemplate(props) {
     setCardList(val.cardList);
     callback({ ...formData, ...val });
   };
+
+  const handleSelect = (val) => {
+    console.log("val", val)
+    setFodderVisible(false)
+  }
+
+  const handleSelectFodder = (val, index) => {
+    console.log("val", val, index)
+    setFodderVisible(true)
+  }
 
   return (
     <Fragment>
@@ -209,13 +189,34 @@ function AddTemplate(props) {
         <Form.Item
           label="模版封面"
           name="imageUrl"
-          rules={[{ required: true, message: "请选择模版封面!" }]}
+          rules={[{ required: true, message: "请上传模版封面!" }]}
         >
           <UploadBox />
         </Form.Item>
-        <Form.Item label="选择卡片">
-          <CardItem onChange={changeCard} />
-        </Form.Item>
+        {formData.templateType === "3"?<Form.Item 
+          label="媒体文件"
+        >
+          <Row gutter={6}>
+            <Col span={12}>
+              <Form.Item name="MediaFile" rules={[{ required: true, message: "请上传媒体文件!" }]} noStyle>
+                <Input placeholder="请选择媒体文件" />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Button type="primary" onClick={()=>setFodderVisible(true)}>选择</Button>
+            </Col>
+          </Row>
+        </Form.Item>:null}
+        {formData.templateType === "4"?<Form.Item 
+          label="文本内容" 
+          name="text" 
+          rules={[{ required: true, message: "请输入文本内容!" }]}
+        >
+          <TextArea rows={3} style={{width: 360}} maxLength={120} showCount placeholder="请输入文本内容"/>
+        </Form.Item>:null}
+        {["1", "2"].includes(formData.templateType)?<Form.Item label="选择卡片">
+          <CardItem onChange={changeCard} formData={formData} handleSelectFodder={handleSelectFodder} />
+        </Form.Item>:null}
         <Form.Item label="悬浮按钮" name="footerButtonList">
           <BoxButton onChange={footerButton} maxCount={11} />
         </Form.Item>
@@ -237,6 +238,15 @@ function AddTemplate(props) {
           </Button>
         </Form.Item>
       </Form>
+      <Drawer
+        title="我的素材"
+        width={"70%"}
+        onClose={()=>setFodderVisible(false)}
+        visible={fodderVisible}
+        bodyStyle={{ paddingBottom: 80 }}
+      >
+        <FodderList handleSelect={handleSelect}/>
+      </Drawer>
     </Fragment>
   );
 }

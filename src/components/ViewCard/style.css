@@ -6,7 +6,7 @@
 .card-box-wrap .shadow {
   display: none;
   position: absolute;
-  background: rgba(63, 62, 62, 0.6);
+  background: rgba(63, 62, 62, 60%);
   z-index: 10;
   border-radius: 6px;
   top: 0;
@@ -24,8 +24,8 @@
 .card-box-wrap .check-status {
   padding: 4px 10px;
   font-size: 12px;
-  border-radius: 4px 0 4px 0;
-  background: rgba(34, 32, 45, 0.6);
+  border-radius: 4px 0;
+  background: rgba(34, 32, 45, 60%);
   color: #fff;
   position: absolute;
   display: inline-block;

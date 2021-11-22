@@ -1,7 +1,7 @@
 /*
  * @Author: pengfei.lv
  * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-18 15:43:19
+ * @LastEditTime: 2021-11-19 16:30:25
  * @LastEditors: pengfei.lv
  * @Description:
  */
@@ -42,6 +42,8 @@ function Login() {
   };
 
   const toLogin = (data) => {
+    console.log("data", data)
+    sessionStorage.setItem("username", data.username)
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
@@ -110,7 +112,7 @@ function Login() {
           >
             <Form.Item
               name="username"
-              rules={[{ required: true, message: "请输入用户名或手机号" }]}
+              rules={[{ required: true, message: "请输入用户名或手机号,不得超过20个字符", whitespace: true, max: 20 }]}
             >
               <Input prefix={<UserOutlined />} placeholder="用户名/手机号" />
             </Form.Item>
@@ -120,6 +122,7 @@ function Login() {
                 {
                   required: true,
                   message: "至少8位，必须同时包含数字、字母！",
+                  whitespace: true,
                 },
               ]}
             >
@@ -135,7 +138,8 @@ function Login() {
                   <Form.Item
                     name="code"
                     noStyle
-                    rules={[{ required: true, message: "请输入验证码" }]}
+                    rules={[{ required: true, message: "请输入验证码", whitespace: true }]}
+                    
                   >
                     <Input
                       prefix={<FieldNumberOutlined />}

@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { Button, Form, Row, Col, Input, Tabs } from "antd";
+import { Button, Form, Row, Col, Input, Tabs, message } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import BoxButton from "../../../components/BoxButton";
 
@@ -10,7 +10,7 @@ const initTab = (index) => ({
   title: `卡片${index}`,
   media: {
     name: "",
-    url: "",
+    url: "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?",
   },
   height: 1,
   desc: "卡片信息描述内容",
@@ -18,11 +18,13 @@ const initTab = (index) => ({
 });
 
 function CardItem(props) {
-  const { value = [], onChange } = props;
+  const { value = [], onChange, formData, handleSelectFodder } = props;
 
   // const [list, setList] = useState([]);
   const [activeKey, setActiveKey] = useState("0");
   const [cardList, setCardList] = useState([initTab(1)]);
+
+  console.log("formData", formData.templateType)
 
   const triggerChange = (changedValue) => {
     onChange?.({
@@ -37,6 +39,10 @@ function CardItem(props) {
   };
 
   const handlePlus = () => {
+    if(formData?.templateType==="1"){
+      message.error("单卡模式不允许添加多个卡片")
+      return
+    }
     const list = JSON.parse(JSON.stringify(cardList));
     list.push(initTab(list.length + 1));
     setCardList(list);
@@ -78,7 +84,7 @@ function CardItem(props) {
       {value?.cardList ||
         cardList.map((item, index) => {
           return (
-            <TabPane tab={item.title} key={String(index)}>
+            <TabPane key={String(index)} tab={item.title}>
               <Fragment>
                 <Form.Item label="媒体文件">
                   <Row gutter={6}>
@@ -86,7 +92,7 @@ function CardItem(props) {
                       <Input value={item.media.name} />
                     </Col>
                     <Col span={12}>
-                      <Button type="primary">选择</Button>
+                      <Button type="primary" onClick={()=>handleSelectFodder(item, index)}>选择</Button>
                     </Col>
                   </Row>
                 </Form.Item>

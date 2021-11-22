@@ -1,7 +1,7 @@
 /*
  * @Author: pengfei.lv
  * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-18 11:57:36
+ * @LastEditTime: 2021-11-19 15:28:53
  * @LastEditors: pengfei.lv
  * @Description:
  */
@@ -12,16 +12,19 @@ const { Meta } = Card;
 
 function CardInfo(props) {
   const { data = {} } = props;
-  const { title, desc, meta, buttonList } = data;
+  const { title, desc, media, buttonList } = data;
+
+  console.log("meta", media)
 
   return (
     <Card
+      size="small"
       style={{ width: "100%", borderRadius: 4 }}
       cover={
         <img
           alt="卡片图"
           style={{ height: "100px", border: "none" }}
-          src={meta?.url}
+          src={media?.url}
         />
       }
     >

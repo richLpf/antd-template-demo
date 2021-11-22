@@ -1,3 +1,23 @@
 body {
   margin: 0;
 }
+
+.fodder-box .fodder-top {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.fodder-box .shadow {
+  padding: 2px 5px;
+  font-size: 12px;
+  border-radius: 4px 0;
+  background: rgba(34, 32, 45, 60%);
+  color: #fff;
+  position: absolute;
+  display: inline-block;
+  left: 0;
+  top: 0;
+  z-index: 11;
+}

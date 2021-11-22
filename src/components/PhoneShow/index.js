@@ -1,7 +1,7 @@
 /*
  * @Author: pengfei.lv
  * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-18 13:54:05
+ * @LastEditTime: 2021-11-22 12:24:08
  * @LastEditors: pengfei.lv
  * @Description:
  */
@@ -140,6 +140,8 @@ function Card3(props) {
 function PhoneShow(props) {
   const { list = [], footerButton = [] } = props;
 
+  console.log("list", list)
+
   return (
     <Fragment>
       <div style={PhoneStyle} className="phone-style">
@@ -151,8 +153,8 @@ function PhoneShow(props) {
           <div className="phone-content-wrap">
             <div className="main">
               <div className="phone-content-left">
-                <div className="headerImage">
-                  <img src={pic5g} alt="" />
+                <div className="header-image">
+                  <img className="current-image" src={pic5g} alt="" />
                 </div>
               </div>
               <div className="phone-content-right">

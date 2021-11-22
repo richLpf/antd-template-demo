@@ -1,7 +1,7 @@
 /*
  * @Author: pengfei.lv
  * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-18 14:01:30
+ * @LastEditTime: 2021-11-19 15:30:04
  * @LastEditors: pengfei.lv
  * @Description:
  */
@@ -18,7 +18,7 @@ function SendTask() {
   const cardList = [
     {
       title: "卡片1",
-      meta: {
+      media: {
         url: "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?",
         name: "",
         type: "img",
@@ -44,7 +44,7 @@ function SendTask() {
     },
     {
       title: "卡片1",
-      meta: {
+      media: {
         url: "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?",
         name: "img",
       },

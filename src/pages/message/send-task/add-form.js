@@ -1,7 +1,7 @@
 /*
  * @Author: pengfei.lv
  * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-18 13:56:28
+ * @LastEditTime: 2021-11-19 15:31:54
  * @LastEditors: pengfei.lv
  * @Description:
  */
@@ -34,7 +34,7 @@ function AddForm(props) {
         form={form}
         name="basic"
         {...layout}
-        initialValues={{ name: "", templateId: "", type: "0", IsDelay: true }}
+        initialValues={{ name: undefined, templateId: undefined, type: "0", IsDelay: true }}
         onFinish={onFinish}
         size="small"
       >
@@ -43,14 +43,14 @@ function AddForm(props) {
           name="name"
           rules={[{ required: true, message: "请输入任务名称" }]}
         >
-          <Input style={{ width: "280px" }} />
+          <Input style={{ width: "280px" }} placeholder="请输入任务名称" />
         </Form.Item>
         <Form.Item
           label="发送模版"
           rules={[{ required: true, message: "请选择发送模版!" }]}
         >
           <Form.Item name="templateId" noStyle>
-            <Input style={{ width: "280px", marginRight: 20 }} />
+            <Input style={{ width: "280px", marginRight: 20 }} placeholder="请选择模版"/>
           </Form.Item>
           <Space>
             <Button size="small" type="primary" onClick={selectTemplate}>
@@ -91,7 +91,7 @@ function AddForm(props) {
           name="SendPhone"
           rules={[{ required: true, message: "输入发送号码" }]}
         >
-          <TextArea row={3} style={{ width: "280px" }} />
+          <TextArea row={3} style={{ width: "280px" }} placeholder="多个号码，请用英文逗号分开"/>
         </Form.Item>
         <Form.Item
           wrapperCol={{

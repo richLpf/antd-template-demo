@@ -1,20 +1,33 @@
 /*
  * @Author: pengfei.lv
  * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-18 15:42:48
+ * @LastEditTime: 2021-11-19 16:26:29
  * @LastEditors: pengfei.lv
  * @Description:
  */
 
 import React from "react";
-import { Avatar, Dropdown, Menu } from "antd";
+import { Avatar, Dropdown, Menu, Button } from "antd";
+import { useNavigate } from "react-router-dom"
 import { UserOutlined } from "@ant-design/icons";
 
-function PublicHeader() {
+function PublicHeader(props) {
+
+  const { user } = props
+
+  console.log("user", user)
+
+  let navigate = useNavigate();
+
+  const handleLoginOut = () => {
+    sessionStorage.removeItem("username")
+    navigate("login")
+  }
+
   const menu = (
     <Menu>
       <Menu.Item>
-        <a href="/login">登出</a>
+        <Button type="link" block onClick={handleLoginOut}>登出</Button>
       </Menu.Item>
     </Menu>
   );
@@ -22,11 +35,14 @@ function PublicHeader() {
   return (
     <div style={{ height: 40, background: "#fff", padding: "0 30px" }}>
       <Dropdown overlay={menu} placement="bottomRight" arrow>
-        <Avatar
-          style={{ float: "right", marginTop: 6 }}
-          size={28}
-          icon={<UserOutlined />}
-        />
+        <div style={{ float: "right", marginTop: 6, cursor: 'pointer' }}>
+          <Avatar
+            style={{display: "inline-block", marginRight: 5}}
+            size={28}
+            icon={<UserOutlined />}
+          />
+          <div style={{display: "inline-block", color: "#7687a4"}}>{user?user:null}</div>
+        </div>
       </Dropdown>
     </div>
   );

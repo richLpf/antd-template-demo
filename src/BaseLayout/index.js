@@ -1,13 +1,13 @@
 /*
  * @Author: pengfei.lv
  * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-18 13:56:54
+ * @LastEditTime: 2021-11-19 17:06:41
  * @LastEditors: pengfei.lv
  * @Description:
  */
 import React, { useState } from "react";
 import { Layout, Menu, Spin } from "antd";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import routes from "../router";
 import { hasChild } from "../utils/common";
 import PublicHeader from "../components/PublicHeader";
@@ -19,7 +19,7 @@ function BaseLayout() {
   let navigate = useNavigate();
 
   const [collapsed, setCollapsed] = useState(false);
-  const [selectedKeys, setSelectedKeys] = useState([]);
+  const [selectedKeys, setSelectedKeys] = useState([window.location.pathname]);
   const onCollapse = () => {
     setCollapsed(!collapsed);
   };
@@ -77,17 +77,19 @@ function BaseLayout() {
   };
 
   const generateItemRoute = (key, component) => {
-    return <Route key={key} path={key} element={component} />;
+    if (window.sessionStorage.getItem("username")) {
+      return <Route key={key} path={key} element={component} />;
+    } else {
+      return <Route key={key} path="*" element={<Navigate to="/login" />} />;
+    }
   };
 
   const onChangeMenu = ({ key }) => {
-    console.log("key", key);
-    // window.location.href = key
     navigate(key);
     setSelectedKeys([key]);
   };
 
-  console.log("selectKeys", selectedKeys);
+  const username = sessionStorage.getItem("username");
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -105,12 +107,8 @@ function BaseLayout() {
         </Menu>
       </Sider>
       <Layout className="site-layout">
-        <PublicHeader />
+        <PublicHeader user={username} />
         <Content style={{ margin: "0 16px", padding: 10 }}>
-          {/*<Breadcrumb style={{ margin: '16px 0' }}>
-          <Breadcrumb.Item>User</Breadcrumb.Item>
-          <Breadcrumb.Item>Bill</Breadcrumb.Item>
-        </Breadcrumb>*/}
           <React.Suspense
             fallback={
               <div style={{ marginTop: 200, textAlign: "center" }}>
