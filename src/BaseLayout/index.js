@@ -88,7 +88,7 @@ function BaseLayout() {
     <Layout style={{ minHeight: "100vh" }}>
       <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
         <div className="logo" style={{ textAlign: "center", borderRadius: 5 }}>
-          Antd Demo
+          Demo
         </div>
         <Menu
           theme="dark"

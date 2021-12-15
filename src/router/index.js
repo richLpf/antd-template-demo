@@ -7,6 +7,7 @@ import {
   MessageOutlined,
   TableOutlined,
   FireOutlined,
+  LineChartOutlined
 } from "@ant-design/icons";
 
 const Dashboard = lazy(() => import("../pages/dashboard"));
@@ -17,6 +18,7 @@ const Message = lazy(() => import("../pages/message/send-task"));
 const Business = lazy(() => import("../pages/business"));
 const Table = lazy(() => import("../pages/table"));
 const Widget = lazy(() => import("../pages/widgets"));
+const ChartDemo = lazy(() => import("../pages/chart"))
 
 const routes = [
   {
@@ -93,6 +95,18 @@ const routes = [
     icon: <SettingOutlined />,
     component: <Business />,
   },
+  {
+    name: "图表组件",
+    key: '/chart',
+    icon: <LineChartOutlined />,
+    children: [
+      {
+        name: "下发消息",
+        key: "/chart/demo",
+        component: <ChartDemo />
+      }
+    ]
+  }
 ];
 
 export default routes;

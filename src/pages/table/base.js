@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
-import { Table } from "antd";
+import TableWrap from './component/table-wrap'
+// import { Table } from "antd";
 
 function TableBase() {
   const dataSource = [
@@ -37,7 +38,7 @@ function TableBase() {
 
   return (
     <Fragment>
-      <Table dataSource={dataSource} columns={columns} />
+      <TableWrap rowKey="key" dataSource={dataSource} columns={columns} />
     </Fragment>
   );
 }
