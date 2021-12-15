@@ -20,7 +20,7 @@
     "build:pre": "cross-env REACT_APP_ENV=development react-app-rewired build",
     "build:prod": "cross-env REACT_APP_ENV=production react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-app-rewired eject",
+    "eject": "react-scripts eject",
     "prepare": "husky install",
     "prettier": "prettier --parser --write ./src/**/*.js",
     "logs": "conventional-changelog -p angular -i CHANGELOG.md -s"
