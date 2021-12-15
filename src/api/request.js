@@ -1,11 +1,3 @@
-/*
- * @Author: pengfei.lv
- * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-18 14:51:45
- * @LastEditors: pengfei.lv
- * @Description:
- */
-
 import { message } from "antd";
 import axios from "axios";
 // import { clearStorage, getStorage } from "src/storages"

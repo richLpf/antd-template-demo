@@ -1,11 +1,3 @@
-/*
- * @Author: pengfei.lv
- * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-19 16:30:25
- * @LastEditors: pengfei.lv
- * @Description:
- */
-
 import React, { Fragment, useState, useEffect } from "react";
 import { Form, Input, Button, Card, PageHeader, Row, Col } from "antd";
 import {
@@ -13,7 +5,6 @@ import {
   LockOutlined,
   FieldNumberOutlined,
 } from "@ant-design/icons";
-import loginBg from "../../assets/images/test.jpg";
 import code from "../../assets/images/code.png";
 // import * as Api from "../../api"
 // import * as Action from "src/store/Action";
@@ -23,7 +14,6 @@ import code from "../../assets/images/code.png";
 function Login() {
   const bgStyle = {
     overflow: "hidden",
-    background: `url(${loginBg}) no-repeat`,
     backgroundSize: "100% 100%",
     height: "100vh",
   };
@@ -99,7 +89,7 @@ function Login() {
         <Card
           title={
             <div style={{ textAlign: "center", fontSize: 20 }}>
-              5G 消息平台登陆
+              Antd Demo平台
             </div>
           }
           style={{ width: 400, margin: "220px auto" }}

@@ -1,11 +1,3 @@
-/*
- * @Author: pengfei.lv
- * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-22 12:24:08
- * @LastEditors: pengfei.lv
- * @Description:
- */
-
 import React, { Fragment } from "react";
 import phoneBg from "../../assets/images/phone_bg.png";
 import pic5g from "../../assets/images/5g.jpeg";

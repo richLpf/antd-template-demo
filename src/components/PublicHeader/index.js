@@ -1,11 +1,3 @@
-/*
- * @Author: pengfei.lv
- * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-19 16:26:29
- * @LastEditors: pengfei.lv
- * @Description:
- */
-
 import React from "react";
 import { Avatar, Dropdown, Menu, Button } from "antd";
 import { useNavigate } from "react-router-dom"

@@ -1,10 +1,3 @@
-/*
- * @Author: pengfei.lv
- * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-22 17:38:24
- * @LastEditors: pengfei.lv
- * @Description:
- */
 import React, { useState } from "react";
 import { Layout, Menu, Spin } from "antd";
 import { Routes, Route, useNavigate, Navigate } from "react-router-dom";

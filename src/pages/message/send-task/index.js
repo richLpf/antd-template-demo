@@ -1,11 +1,3 @@
-/*
- * @Author: pengfei.lv
- * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-19 15:30:04
- * @LastEditors: pengfei.lv
- * @Description:
- */
-
 import React, { useState } from "react";
 import { Row, Col, Card } from "antd";
 import PhoneShow from "../../../components/PhoneShow";

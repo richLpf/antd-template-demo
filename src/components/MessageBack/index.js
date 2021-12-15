@@ -1,10 +1,3 @@
-/*
- * @Author: pengfei.lv
- * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-16 21:32:24
- * @LastEditors: pengfei.lv
- * @Description:
- */
 import React, { useState } from "react";
 import { Switch, Input, Space } from "antd";
 

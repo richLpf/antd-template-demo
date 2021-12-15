@@ -1,10 +1,3 @@
-/*
- * @Author: pengfei.lv
- * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-19 15:28:53
- * @LastEditors: pengfei.lv
- * @Description:
- */
 import React from "react";
 import { Button, Card, Space } from "antd";
 

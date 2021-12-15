@@ -1,11 +1,3 @@
-/*
- * @Author: pengfei.lv
- * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-19 18:06:12
- * @LastEditors: pengfei.lv
- * @Description:
- */
-
 import React, { Fragment, useState } from "react";
 import { Form, Input, Button, Row, Col, Select, Drawer } from "antd";
 import CardItem from "./card-item";

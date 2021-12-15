@@ -1,11 +1,4 @@
-/*
- * @Author: pengfei.lv
- * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-15 11:35:10
- * @LastEditors: pengfei.lv
- * @Description:
- */
-
+import React from 'react'
 import { Form, Input, Select, Tooltip, Button, Space, Typography } from "antd";
 
 const { Option } = Select;

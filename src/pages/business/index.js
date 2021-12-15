@@ -1,11 +1,3 @@
-/*
- * @Author: pengfei.lv
- * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-15 13:21:39
- * @LastEditors: pengfei.lv
- * @Description:
- */
-
 import React, { useState } from "react";
 import { Tabs, Card } from "antd";
 import Base from "../../components/FormDemo/base";

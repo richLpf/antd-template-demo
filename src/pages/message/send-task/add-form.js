@@ -1,10 +1,3 @@
-/*
- * @Author: pengfei.lv
- * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-19 15:31:54
- * @LastEditors: pengfei.lv
- * @Description:
- */
 import React, { Fragment, useState } from "react";
 import { Form, Button, Input, Space, Radio, DatePicker, Switch } from "antd";
 

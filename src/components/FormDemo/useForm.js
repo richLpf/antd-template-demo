@@ -1,10 +1,3 @@
-/*
- * @Author: pengfei.lv
- * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-16 21:36:56
- * @LastEditors: pengfei.lv
- * @Description:
- */
 import { Form, Input, Button, Select } from "antd";
 const { Option } = Select;
 const layout = {

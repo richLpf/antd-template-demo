@@ -1,11 +1,3 @@
-/*
- * @Author: pengfei.lv
- * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-15 12:38:49
- * @LastEditors: pengfei.lv
- * @Description:
- */
-
 import React, { useState } from "react";
 import { Form, InputNumber } from "antd";
 

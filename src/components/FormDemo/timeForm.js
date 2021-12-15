@@ -1,11 +1,3 @@
-/*
- * @Author: pengfei.lv
- * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-15 12:34:07
- * @LastEditors: pengfei.lv
- * @Description:
- */
-
 import { Form, DatePicker, TimePicker, Button } from "antd";
 const { RangePicker } = DatePicker;
 const formItemLayout = {

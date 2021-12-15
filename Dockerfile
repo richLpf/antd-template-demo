@@ -4,8 +4,6 @@ WORKDIR /data/front
 
 COPY . .
 
-# RUN npm install @ucloud/ucloud-icons --registry=http://registry.npm.pre.ucloudadmin.com --no-package-lock --no-save
-
 RUN npm install --registry=https://registry.npm.taobao.org --no-package-lock --no-save
 
 RUN yarn build:prod

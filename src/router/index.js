@@ -1,10 +1,3 @@
-/*
- * @Author: pengfei.lv
- * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-22 18:11:31
- * @LastEditors: pengfei.lv
- * @Description:
- */
 import React, { lazy } from "react";
 import {
   DesktopOutlined,

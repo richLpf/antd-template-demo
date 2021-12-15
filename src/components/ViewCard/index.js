@@ -1,10 +1,3 @@
-/*
- * @Author: pengfei.lv
- * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-17 11:28:29
- * @LastEditors: pengfei.lv
- * @Description:
- */
 import React, { Fragment } from "react";
 import { Button, Space, Image } from "antd";
 import { Loading3QuartersOutlined } from "@ant-design/icons";

@@ -1,11 +1,3 @@
-/*
- * @Author: pengfei.lv
- * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-19 12:09:38
- * @LastEditors: pengfei.lv
- * @Description:
- */
-
 import React, { Fragment, useState } from "react";
 import { message, Upload, Button } from "antd";
 import { LoadingOutlined, CloudUploadOutlined } from "@ant-design/icons";

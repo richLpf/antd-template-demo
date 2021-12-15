@@ -1,10 +1,3 @@
-/*
- * @Author: pengfei.lv
- * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-16 18:37:29
- * @LastEditors: pengfei.lv
- * @Description:
- */
 import React from "react";
 import { Drawer, Card, Pagination } from "antd";
 import ViewCard from "../../../components/ViewCard";

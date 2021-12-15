@@ -1,11 +1,3 @@
-/*
- * @Author: pengfei.lv
- * @LastModifiedBy: pengfei.lv
- * @LastEditTime: 2021-11-18 12:34:41
- * @LastEditors: pengfei.lv
- * @Description:
- */
-
 import React from "react";
 import { Form, Input, Button, Checkbox } from "antd";
 
