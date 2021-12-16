@@ -38,6 +38,14 @@ function Dashboard() {
       url: "",
       desc: "常见的上下布局"
     }]
+  },{
+    id: 3,
+    name: "React中图标组件的用法",
+    list: [{
+      title: "apexcharts",
+      url: "",
+      desc: "轻量级的图标组件"
+    }]
   }]
 
   return (
