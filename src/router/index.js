@@ -101,7 +101,7 @@ const routes = [
     icon: <LineChartOutlined />,
     children: [
       {
-        name: "图标",
+        name: "apexcharts",
         key: "/chart/demo",
         component: <ChartDemo />,
       },
