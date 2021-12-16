@@ -67,7 +67,7 @@ const routes = [
       {
         name: "apexcharts",
         key: "/chart/demo",
-        component: <ChartDemo />
+        component: <ChartDemo />,
       },
     ],
   },
