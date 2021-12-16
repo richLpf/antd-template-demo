@@ -1,7 +1,7 @@
 const { createProxyMiddleware } = require("http-proxy-middleware");
 
 const proxyConfig = [{
-    url: "/v/api/*",
+    url: "/v1/*",
     target: "http://localhost:9000",
     changeOrigin: true
 }]

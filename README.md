@@ -4,7 +4,7 @@
 
 ## 一、项目信息
 
-文档地址：待定
+- ![文档地址](https://github.com/richLpf/antd-template-demo/tree/main/docs)
 
 问题和方案汇总：待定
 
@@ -28,6 +28,7 @@ yarn start
 - react
 - antd
 - axios
+- [json2csv](https://www.npmjs.com/package/json2csv):导出csv文件
 
 ## 四、功能截图
 

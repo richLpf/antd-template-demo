@@ -1,22 +1,16 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
+import { Button } from "antd"
 import TableWrap from './component/table-wrap'
+import * as Api from '../../api'
 // import { Table } from "antd";
 
 function TableBase() {
-  const dataSource = [
-    {
-      key: "1",
-      name: "胡彦斌",
-      age: 32,
-      address: "西湖区湖底公园1号",
-    },
-    {
-      key: "2",
-      name: "胡彦祖",
-      age: 42,
-      address: "西湖区湖底公园1号",
-    },
-  ];
+
+  const [Data, setData] = useState([])
+
+  useEffect(() => {
+    getList()
+  }, [])
 
   const columns = [
     {
@@ -36,9 +30,28 @@ function TableBase() {
     },
   ];
 
+  const getList = () => {
+    Api.GetList().then(res => {
+      // console.log("response", JSON.parse(JSON.stringify(res)))
+      const { RetCode, Data, Message } = JSON.parse(JSON.stringify(res))
+      console.log("RetCode", RetCode, Data)
+      setData(Data)
+    })
+  }
+  
+  console.log("Data", Data)
+
+  const leftAction = <Button type="primary">添加</Button>
+
   return (
     <Fragment>
-      <TableWrap rowKey="key" dataSource={dataSource} columns={columns} />
+      <TableWrap 
+        rowKey="key"
+        leftAction={leftAction}
+        query={Api.GetList} 
+        dataSource={Data} 
+        columns={columns} 
+      />
     </Fragment>
   );
 }
