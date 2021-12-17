@@ -93,7 +93,6 @@ function Login() {
             </div>
           }
           style={{ width: 400, margin: "220px auto" }}
-          bordered={false}
         >
           <Form
             name="normal_login"

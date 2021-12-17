@@ -29,6 +29,7 @@ yarn start
 - antd
 - axios
 - [json2csv](https://www.npmjs.com/package/json2csv):导出csv文件
+- [react-monaco-editor](https://github.com/react-monaco-editor/react-monaco-editor)
 
 ## 四、功能截图
 

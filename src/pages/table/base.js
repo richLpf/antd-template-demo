@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState, useRef } from "react";
 import { Button } from "antd"
 import TableWrap from './component/table-wrap'
 import * as Api from '../../api'
@@ -8,8 +8,14 @@ function TableBase() {
 
   const [Data, setData] = useState([])
 
+  const tableRef = useRef()
+
+  console.log("tableRef", tableRef.current)
+
   useEffect(() => {
+
     getList()
+
   }, [])
 
   const columns = [
@@ -30,22 +36,25 @@ function TableBase() {
     },
   ];
 
-  const getList = () => {
-    Api.GetList().then(res => {
-      // console.log("response", JSON.parse(JSON.stringify(res)))
-      const { RetCode, Data, Message } = JSON.parse(JSON.stringify(res))
-      console.log("RetCode", RetCode, Data)
+  const getList = (data) => {
+    Api.GetList(data).then(res => {
+      const { Data } = JSON.parse(JSON.stringify(res))
       setData(Data)
     })
   }
-  
-  console.log("Data", Data)
 
-  const leftAction = <Button type="primary">添加</Button>
+  const handleAdd = () => {
+    tableRef.current.fetchData()
+    const result = tableRef.current.data;
+    console.log("result", result)
+  }
+
+  const leftAction = <Button type="primary" onClick={handleAdd}>添加</Button>
 
   return (
     <Fragment>
       <TableWrap 
+        ref={tableRef}
         rowKey="key"
         leftAction={leftAction}
         query={Api.GetList} 

@@ -5,6 +5,7 @@ import {
   TableOutlined,
   FireOutlined,
   LineChartOutlined,
+  FunctionOutlined
 } from "@ant-design/icons";
 
 const Dashboard = lazy(() => import("../pages/dashboard"));
@@ -16,6 +17,7 @@ const Business = lazy(() => import("../pages/business"));
 const Table = lazy(() => import("../pages/table"));
 const Widget = lazy(() => import("../pages/widgets"));
 const ChartDemo = lazy(() => import("../pages/chart"));
+const Debounce = lazy(() => import("../pages/debounce"))
 
 const routes = [
   {
@@ -71,6 +73,16 @@ const routes = [
       },
     ],
   },
+  {
+    name: '常见函数实现',
+    key: '/func',
+    icon: <FunctionOutlined />,
+    children: [{
+      name: "防抖和节流",
+      key: '/func/debounce',
+      component: <Debounce />
+    }]
+  }
 ];
 
 export default routes;

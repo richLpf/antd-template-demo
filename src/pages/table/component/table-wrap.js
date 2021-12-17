@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useImperativeHandle, forwardRef, useCallback } from 'react'
 import { ReloadOutlined, DownloadOutlined } from "@ant-design/icons"
 import { Card, Table, Button, Space } from "antd"
 import PropTypes from 'prop-types'
-function TableWrap(props){
+
+const TableWrap = forwardRef((props, ref) => {
 
     const { 
         columns,
@@ -16,9 +17,29 @@ function TableWrap(props){
     const [total, setTotal] = useState(0)
     const [loading, setLoading] = useState(false)
 
+    const fetchData = useCallback((data) => {
+        setLoading(true)
+        query(data).then(res => {
+            const { Data, Total } = JSON.parse(JSON.stringify(res))
+            setData(Data)
+            setTotal(Total)
+            setLoading(false)
+            return Data
+        }).catch(err => {
+            setLoading(false)
+            return err
+        })
+    }, [query])
+
+
     useEffect(() => {
         setData(dataSource)
     }, [dataSource])
+
+    useImperativeHandle(ref, () => ({
+        fetchData: () => fetchData(),
+        data: Data
+    }),[Data, fetchData])
 
     const tableProps = () => {
         return {
@@ -34,19 +55,9 @@ function TableWrap(props){
         
     }
 
-    const fetchData = (data) => {
-        setLoading(true)
-        query(data).then(res => {
-            const { Data, Total } = JSON.parse(JSON.stringify(res))
-            setData(Data)
-            setTotal(Total)
-            setLoading(false)
-            return Data
-        }).catch(err => {
-            setLoading(false)
-            return err
-        })
-    }
+    
+    
+    console.log("total", total, fetchData)
 
     const CardExtra = <Space>
         <Button type="primary" onClick={handleDownload} icon={<DownloadOutlined />}></Button>
@@ -63,7 +74,7 @@ function TableWrap(props){
             tableProps={{...tableProps()}} 
         />
     </Card>
-}
+})
 
 TableWrap.defaultProps = {
     usePagination: false

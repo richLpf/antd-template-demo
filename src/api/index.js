@@ -13,6 +13,6 @@ export const GetList = (query) => {
   return request({
     url: "/v1/list",
     method: "get",
-    query
-  })
-}
+    query,
+  });
+};
