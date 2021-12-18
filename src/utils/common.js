@@ -4,23 +4,23 @@ export const hasChild = (routes) => {
 };
 
 export function debounce(cb, wait = 2000) {
-  let timer = null
+  let timer = null;
   return (...args) => {
-      if (timer) clearTimeout(timer)
-      timer = setTimeout(() => {
-          timer = null
-          cb(args)
-      }, wait)
-  }
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      timer = null;
+      cb(args);
+    }, wait);
+  };
 }
 
 // export function debounce(func, delay=2000) {
-  // var timeout;
-  // return function(e) {
-      // clearTimeout(timeout);
-      // var context = this, args = arguments
-      // timeout = setTimeout(function(){
-        // func.apply(context, args);
-      // }, delay)
-  // };
+// var timeout;
+// return function(e) {
+// clearTimeout(timeout);
+// var context = this, args = arguments
+// timeout = setTimeout(function(){
+// func.apply(context, args);
+// }, delay)
+// };
 // };

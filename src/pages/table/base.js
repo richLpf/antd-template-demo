@@ -2,20 +2,14 @@ import React, { Fragment, useEffect, useState, useRef } from "react";
 import { Button } from "antd"
 import TableWrap from './component/table-wrap'
 import * as Api from '../../api'
-// import { Table } from "antd";
 
 function TableBase() {
 
   const [Data, setData] = useState([])
-
   const tableRef = useRef()
 
-  console.log("tableRef", tableRef.current)
-
   useEffect(() => {
-
     getList()
-
   }, [])
 
   const columns = [
@@ -28,6 +22,8 @@ function TableBase() {
       title: "年龄",
       dataIndex: "age",
       key: "age",
+      sorter: true,
+      render: val => `${val}岁`
     },
     {
       title: "住址",
@@ -35,6 +31,7 @@ function TableBase() {
       key: "address",
     },
   ];
+
 
   const getList = (data) => {
     Api.GetList(data).then(res => {
@@ -56,6 +53,21 @@ function TableBase() {
       <TableWrap 
         ref={tableRef}
         rowKey="key"
+        download={{
+          limit: 10000,
+          exportData: row => {
+            return {
+              fields: columns.filter(item => item.key !== "actions").map(({title, key}) => ({
+                label: title,
+                value: key
+              })),
+              data: row.map(item => ({
+                ...item,
+                age: `${item.age}岁`
+              })),
+            }
+          }}
+        }
         leftAction={leftAction}
         query={Api.GetList} 
         dataSource={Data} 

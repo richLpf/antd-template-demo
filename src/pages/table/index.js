@@ -9,10 +9,10 @@ function TableDemo() {
   return (
     <Fragment>
       <Tabs>
-        <TabPane key={1} title="基础表单" tab="base">
+        <TabPane key={1} tab="基础表单">
           <TableBase />
         </TabPane>
-        <TabPane key={2} title="滚动表单" tab="test">
+        <TabPane key={2} tab="滚动表单">
           <TableGroup />
         </TabPane>
       </Tabs>

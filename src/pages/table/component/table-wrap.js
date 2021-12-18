@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useImperativeHandle, forwardRef, useCallback } from 'react'
-import { ReloadOutlined, DownloadOutlined } from "@ant-design/icons"
-import { Card, Table, Button, Space } from "antd"
+import { ReloadOutlined, DownloadOutlined, SearchOutlined } from "@ant-design/icons"
+import { Card, Table, Button, Space, Input, message } from "antd"
 import PropTypes from 'prop-types'
+import exportCSV from '../../../utils/download'
+
+const DefaultPageSize = 9999999
 
 const TableWrap = forwardRef((props, ref) => {
 
@@ -10,17 +13,31 @@ const TableWrap = forwardRef((props, ref) => {
         dataSource,
         rowKey,
         query,
-        leftAction
+        leftAction,
+        useBackendPagination,
+        download,
+        filterParams,
+        size,
+        useBackendSearch
     } = props
+
+    const { limit, exportData, exportQuery } = download
 
     const [Data, setData] = useState(dataSource||[])
     const [total, setTotal] = useState(0)
     const [loading, setLoading] = useState(false)
+    const [exportLoading, setExportLoading] = useState(false)
+    const [FuzzySearch, setFuzzySearch] = useState(undefined)
+    const [pagination, setPagination] = useState({
+        Page: 1,
+        PageSize: 10
+    })
 
-    const fetchData = useCallback((data) => {
+    const fetchData = useCallback( async (data) => {
         setLoading(true)
-        query(data).then(res => {
+        return query(data).then(res => {
             const { Data, Total } = JSON.parse(JSON.stringify(res))
+            console.log("toata", Total)
             setData(Data)
             setTotal(Total)
             setLoading(false)
@@ -36,57 +53,140 @@ const TableWrap = forwardRef((props, ref) => {
         setData(dataSource)
     }, [dataSource])
 
+    // 暴露接口调用和表格数据给父组件
     useImperativeHandle(ref, () => ({
         fetchData: () => fetchData(),
         data: Data
     }),[Data, fetchData])
 
-    const tableProps = () => {
+    const toQueryParams = useCallback((data) => {
+        const { Page, PageSize, FuzzySearch } = pagination
         return {
-            
+            ...useBackendPagination ? {
+                Page: data?.Page || Page,
+                PageSize: data?.PageSize || PageSize,
+                FuzzySearch: data?.FuzzySearch || FuzzySearch,
+                ...filterParams
+            }:{
+                Page: 0,
+                PageSize: DefaultPageSize,
+                ...filterParams
+            }
+        }
+    }, [filterParams, pagination, useBackendPagination])
+
+    const handleDownload = async () => {
+        let dataSource = Data
+        if(useBackendPagination){
+            setExportLoading(true)
+            const exportPromise = exportQuery 
+            ? exportQuery({
+                ...toQueryParams()
+            }) 
+            : query({
+                ...toQueryParams(),
+                Page: 0,
+                ...limit ? { PageSize: limit } : {}
+            })
+            dataSource = await exportPromise
+                    .then(res => res.Data)
+                    .catch(err => {
+                        setExportLoading(false)
+                        message.error(String(err))
+                        return null
+                    })
+            setExportLoading(false)
+        }
+        if(Array.isArray(dataSource)&&dataSource.length){
+            const { data, fields } = exportData(dataSource)
+            exportCSV({ fields, dataSource: data, filename: "list.csv" })
         }
     }
-    const handleReload = () => {
-        fetchData()
-    }
 
-    const handleDownload = () => {
-        console.log("click to download")
-        
-    }
+    const tableProps = useCallback(() => {
+        return {
+            dataSource: useBackendPagination&&useBackendSearch 
+            ? Data 
+            : Data.filter(item => !FuzzySearch || Object.keys(item).some(k => {
+                return typeof(item[k]) !== Object && String(item[k]).includes(FuzzySearch)
+            })),
+            ...useBackendPagination ? {
+                pagination: {
+                    current: pagination.Page,
+                    pageSize: pagination.PageSize,
+                    total: total,
+                    onChange: onChange
+                }
+            }:{},
+            scroll: { x: true }
+        }
+    }, [Data, FuzzySearch, total, useBackendPagination, useBackendSearch, pagination])
 
-    
-    
-    console.log("total", total, fetchData)
+    const onSearch = () => {
+        console.log("查询", FuzzySearch)
+        if(!FuzzySearch||(useBackendPagination&&useBackendSearch)){
+            return
+        }
+        // 后端分页查询
+        setPagination({Page: 0, PageSize: 0})
+        fetchData({FuzzySearch, Page: 0, PageSize: 10})
+    }
+    const onChange = (Page, PageSize) => {
+        console.log("val", Page, PageSize)
+        setPagination({...pagination, Page, PageSize})
+    }
 
     const CardExtra = <Space>
-        <Button type="primary" onClick={handleDownload} icon={<DownloadOutlined />}></Button>
-        <Button type="primary" onClick={handleReload} icon={<ReloadOutlined />}></Button>
+        <Input 
+            size={size}
+            suffix={<SearchOutlined onClick={onSearch} />} 
+            value={FuzzySearch} 
+            onChange={(e)=>setFuzzySearch(e.target.value)} 
+            placeholder="search..." 
+            onPressEnter={onSearch}
+        />
+        <Button size={size} type="primary" loading={exportLoading} onClick={handleDownload} icon={<DownloadOutlined />}></Button>
+        <Button size={size} type="primary" onClick={()=>fetchData({...toQueryParams()})} icon={<ReloadOutlined />}></Button>
     </Space>
 
-    return <Card title={leftAction} extra={CardExtra}>
+    console.log("tableProps", tableProps())
+
+    return <Card size={size} title={leftAction} extra={CardExtra}>
         <Table 
-            dataSource={Data} 
+            size={size}
             columns={columns} 
             rowKey={rowKey} 
             loading={loading} 
             bordered 
-            tableProps={{...tableProps()}} 
+            {...tableProps()}
         />
     </Card>
 })
 
 TableWrap.defaultProps = {
-    usePagination: false
+    usePagination: false,
+    size: "middle",
+    useBackendSearch: false
 };
 
 TableWrap.propTypes = {
-    usePagination: PropTypes.bool, // 是否使用后端分页
+    download: PropTypes.shape({
+        limit: PropTypes.number,
+        exportData: PropTypes.func,
+        exportQuery: PropTypes.func, // 下载是否为单独的接口
+        ResponseDataKey: PropTypes.string, // 接口返回数据的key
+        ResponseTotalKey: PropTypes.string // 接口返回Total参数名
+    }),
+    pagination: PropTypes.object,
+    useBackendPagination: PropTypes.bool, // 是否使用后端分页
     filter: PropTypes.object, // 过滤参数
     query: PropTypes.func.isRequired, // 请求API
     columns: PropTypes.array.isRequired, // 标题数据
     useReloadButton: PropTypes.bool, // 刷新表格按钮
     leftAction: PropTypes.any, // 表格头部左侧按钮操作
+    filterParams: PropTypes.object,
+    size: PropTypes.oneOf(['small', 'large', 'middle']),
+    useBackendSearch: PropTypes.bool // 是否使用后端搜索
 }
 
 export default TableWrap

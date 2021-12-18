@@ -63,8 +63,8 @@ function Dashboard() {
         <div key={item.id} style={{marginTop: 20, marginBottom: 20}}> 
             <h2>{item.name}</h2>
             <Row gutter={8}>
-            {item.list.map(c => (
-                <Col span={6}>
+            {item.list.map((c,index) => (
+                <Col span={6} key={index}>
                     <Card size="small" title={c.title}>
                       {c.desc}
                     </Card>
