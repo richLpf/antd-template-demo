@@ -7,8 +7,6 @@ function PublicHeader(props) {
 
   const { user } = props
 
-  console.log("user", user)
-
   let navigate = useNavigate();
 
   const handleLoginOut = () => {

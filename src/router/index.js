@@ -18,7 +18,7 @@ const Table = lazy(() => import("../pages/table"));
 const Widget = lazy(() => import("../pages/widgets"));
 const ChartDemo = lazy(() => import("../pages/chart"));
 const Debounce = lazy(() => import("../pages//lib/debounce"));
-const Context = lazy(() => import("../pages/hooks/context"))
+const Context = lazy(() => import("../pages/hooks/context"));
 
 const routes = [
   {
@@ -87,8 +87,8 @@ const routes = [
       {
         name: "Hooks",
         key: "/func/hooks",
-        component: <Context />
-      }
+        component: <Context />,
+      },
     ],
   },
 ];
