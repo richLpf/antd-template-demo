@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useImperativeHandle, forwardRef, useCallback } from 'react'
-import { ReloadOutlined, DownloadOutlined, SearchOutlined } from "@ant-design/icons"
+import { ReloadOutlined, DownloadOutlined, SearchOutlined, SettingOutlined } from "@ant-design/icons"
 import { Card, Table, Button, Space, Input, message } from "antd"
 import PropTypes from 'prop-types'
 import exportCSV from '../../../utils/download'
@@ -147,6 +147,7 @@ const TableWrap = forwardRef((props, ref) => {
         />
         <Button size={size} type="primary" loading={exportLoading} onClick={handleDownload} icon={<DownloadOutlined />}></Button>
         <Button size={size} type="primary" onClick={()=>fetchData({...toQueryParams()})} icon={<ReloadOutlined />}></Button>
+        <Button size={size} type="primary" onClick={()=>fetchData({...toQueryParams()})} icon={<SettingOutlined />}></Button>
     </Space>
 
     console.log("tableProps", tableProps())

@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { Input, Button, Card } from "antd"
+import { Input, Card } from "antd"
 import { debounce, throttle1 } from "../../utils/common"
 
 function Debounce(){

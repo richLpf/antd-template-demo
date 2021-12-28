@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Chart from '../../components/Chart/Demo'
+import Chart from '../../components/Chart/apexcharts/Demo'
 
 function ChartDemo(){
     return <Chart />
