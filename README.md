@@ -6,14 +6,18 @@
 - [x] 本地开发，接口反向代理
 - [ ] 中后台项目，不通风格的登录页面
 - [ ] 多个的布局方式
+- [ ] 面包屑处理
+- [ ] 引导页
 - [ ] redux的引入
+- [ ] 路由权限设计
 - [ ] 完成项目基于Docker的构建
 - [ ] 基于Antd表格组件封装
     - [ ] 基于前端分页、后端分页、下载、刷新、自定义设置表头的表格
+    - [ ] excel导入表格
     - [ ] 表格筛选
 - [ ] 图表插件的封装
 - [ ] 多个详情页面的布局
-
+- [ ] 拖拽工作台
 
 ## 一、项目信息
 
@@ -77,12 +81,12 @@ yarn start
 - 虚机部署
 - K8s部署
 
-## 八、代码目录
-
-## 九、Q&A
+## 八、Q&A
 
 - 前端反向代理配置
 
-## 十、结尾
+## 九、优秀的demo项目整理
+- [react-antd-admin](https://nlrx.gitee.io/react-antd-admin-template/#/dashboard)
+- [vue-demo](https://panjiachen.github.io/vue-element-admin/#/dashboard)
 
-加油
+
