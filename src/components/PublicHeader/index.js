@@ -17,6 +17,9 @@ function PublicHeader(props) {
   const menu = (
     <Menu>
       <Menu.Item>
+        <Button type="link" block href="https://github.com/richLpf/antd-template-demo">项目地址</Button>
+      </Menu.Item>
+      <Menu.Item>
         <Button type="link" block onClick={handleLoginOut}>登出</Button>
       </Menu.Item>
     </Menu>

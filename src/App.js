@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.less";
 import zhCN from "antd/lib/locale/zh_CN";
 import { ConfigProvider } from "antd";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
