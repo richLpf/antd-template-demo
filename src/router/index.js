@@ -17,7 +17,7 @@ const Business = lazy(() => import("../pages/business"));
 const Table = lazy(() => import("../pages/table"));
 const Widget = lazy(() => import("../pages/widgets"));
 const ChartDemo = lazy(() => import("../pages/chart"));
-const AntvDemo = lazy(() => import("../pages/chart/antv"))
+const AntvDemo = lazy(() => import("../pages/chart/antv"));
 const Debounce = lazy(() => import("../pages//lib/debounce"));
 const Context = lazy(() => import("../pages/hooks/context"));
 
@@ -76,8 +76,8 @@ const routes = [
       {
         name: "AntvDemo",
         key: "/chart/antv",
-        component: <AntvDemo />
-      }
+        component: <AntvDemo />,
+      },
     ],
   },
   {

@@ -29,7 +29,7 @@ export function throttle1(func, delay = 1000) {
 }
 
 // 多次触发，每隔一段时间执行一次
-export function throttle(fn, threshhold=160) {
+export function throttle(fn, threshhold = 160) {
   var timeout;
   var start = new Date();
   return function () {

@@ -4,19 +4,14 @@
 
 ## 一、项目信息
 
-- ![文档地址](https://github.com/richLpf/antd-template-demo/tree/main/docs)
-
-问题和方案汇总：待定
-
-更新日志：待定
-
-项目Demo示例地址：待定（github部署）
+- [文档地址](https://github.com/richLpf/antd-template-demo/tree/main/docs)
+- [项目Demo示例]
 ## 二、开发
 
 ```
 cd antd-template-project
 
-cnpm i
+yarn install
 
 yarn start
 ```
@@ -28,7 +23,7 @@ yarn start
 - react
 - antd
 - axios
-- [json2csv](https://www.npmjs.com/package/json2csv):导出csv文件
+- [json2csv:导出csv文件](https://www.npmjs.com/package/json2csv)
 - [react-monaco-editor](https://github.com/react-monaco-editor/react-monaco-editor)
 
 ## 四、功能截图
