@@ -1,7 +1,7 @@
 #!/bin/sh
 # . "$(dirname "$0")/_/husky.sh"
 
-node ".husky/scripts/index.js" $GIT_AUTHOR_NAME $0
+node ".husky/scripts/index.js" $GIT_AUTHOR_NAME $GIT_HTTP_LOW_SPEED_LIMIT
 
 echo "$(dirname "$0")"
 
