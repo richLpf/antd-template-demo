@@ -28,7 +28,6 @@ window.console.error = function (e) {
   consoleError && consoleError.apply(window, arguments);
 };
 
-const data = [];
 console.log("init");
 
 function App() {
