@@ -1,27 +1,28 @@
 import React, { Fragment, useState } from "react";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import { Row, Col, Card, Pagination, Drawer, Modal, Button } from "antd";
 import ViewCard from "../../components/ViewCard";
 import AddTemplate from "./modals/add-template";
 import PhoneHeader from "../../components/PhoneShow";
 
 function Template() {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [visible, setVisible] = useState(false);
-  const [cardList, setCardList] = useState([{
-    title: `卡片1`,
-    media: {
-      name: "",
-      url: "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?",
-      type: "img",
+  const [cardList, setCardList] = useState([
+    {
+      title: `卡片1`,
+      media: {
+        name: "",
+        url: "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?",
+        type: "img",
+      },
+      height: 1,
+      desc: "卡片信息描述内容",
+      buttonList: [],
     },
-    height: 1,
-    desc: "卡片信息描述内容",
-    buttonList: [],
-  }]);
+  ]);
   const [footerButtonList, setFooterButtonList] = useState([]);
 
   const onClose = () => {
@@ -34,7 +35,7 @@ function Template() {
 
   const callback = (value) => {
     const { cardList } = value;
-    console.log("cardList", cardList)
+    console.log("cardList", cardList);
     setCardList(cardList);
   };
 
@@ -57,7 +58,17 @@ function Template() {
 
   return (
     <Fragment>
-      <Card title={<Button type="primary" size="small" onClick={()=>navigate('/template/add')}>新增</Button>}>
+      <Card
+        title={
+          <Button
+            type="primary"
+            size="small"
+            onClick={() => navigate("/template/add")}
+          >
+            新增
+          </Button>
+        }
+      >
         <div style={{ width: "100%", overflow: "hidden" }}>
           {[1, 2, 2, 3, 3, 4, 5, 6].map((item, index) => {
             return (

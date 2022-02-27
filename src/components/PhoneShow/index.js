@@ -132,7 +132,7 @@ function Card3(props) {
 function PhoneShow(props) {
   const { list = [], footerButton = [] } = props;
 
-  console.log("list", list)
+  console.log("list", list);
 
   return (
     <Fragment>

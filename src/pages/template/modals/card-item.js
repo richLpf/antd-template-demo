@@ -24,7 +24,7 @@ function CardItem(props) {
   const [activeKey, setActiveKey] = useState("0");
   const [cardList, setCardList] = useState([initTab(1)]);
 
-  console.log("formData", formData.templateType)
+  console.log("formData", formData.templateType);
 
   const triggerChange = (changedValue) => {
     onChange?.({
@@ -39,9 +39,9 @@ function CardItem(props) {
   };
 
   const handlePlus = () => {
-    if(formData?.templateType==="1"){
-      message.error("单卡模式不允许添加多个卡片")
-      return
+    if (formData?.templateType === "1") {
+      message.error("单卡模式不允许添加多个卡片");
+      return;
     }
     const list = JSON.parse(JSON.stringify(cardList));
     list.push(initTab(list.length + 1));
@@ -92,7 +92,12 @@ function CardItem(props) {
                       <Input value={item.media.name} />
                     </Col>
                     <Col span={12}>
-                      <Button type="primary" onClick={()=>handleSelectFodder(item, index)}>选择</Button>
+                      <Button
+                        type="primary"
+                        onClick={() => handleSelectFodder(item, index)}
+                      >
+                        选择
+                      </Button>
                     </Col>
                   </Row>
                 </Form.Item>

@@ -3,12 +3,11 @@ import { Form, Input, Button, Card, PageHeader, Row, Col } from "antd";
 import {
   UserOutlined,
   LockOutlined,
-  VerifiedOutlined
+  VerifiedOutlined,
 } from "@ant-design/icons";
 import code from "../../assets/images/code.png";
 
 function Login() {
-
   const [loading, setLoading] = useState(false);
 
   const onFinish = (values) => {
@@ -17,7 +16,7 @@ function Login() {
   };
 
   const toLogin = (data) => {
-    sessionStorage.setItem("username", data.username)
+    sessionStorage.setItem("username", data.username);
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
@@ -49,9 +48,7 @@ function Login() {
       </div>
       <Card
         title={
-          <div style={{ textAlign: "center", fontSize: 20 }}>
-            Antd Demo平台
-          </div>
+          <div style={{ textAlign: "center", fontSize: 20 }}>Antd Demo平台</div>
         }
         style={{ width: 400, margin: "220px auto" }}
       >
@@ -62,7 +59,14 @@ function Login() {
         >
           <Form.Item
             name="username"
-            rules={[{ required: true, message: "请输入用户名或手机号,不得超过20个字符", whitespace: true, max: 20 }]}
+            rules={[
+              {
+                required: true,
+                message: "请输入用户名或手机号,不得超过20个字符",
+                whitespace: true,
+                max: 20,
+              },
+            ]}
           >
             <Input prefix={<UserOutlined />} placeholder="用户名/手机号" />
           </Form.Item>
@@ -88,8 +92,13 @@ function Login() {
                 <Form.Item
                   name="code"
                   noStyle
-                  rules={[{ required: true, message: "请输入验证码", whitespace: true }]}
-                  
+                  rules={[
+                    {
+                      required: true,
+                      message: "请输入验证码",
+                      whitespace: true,
+                    },
+                  ]}
                 >
                   <Input
                     prefix={<VerifiedOutlined />}

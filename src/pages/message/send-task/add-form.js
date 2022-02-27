@@ -27,7 +27,12 @@ function AddForm(props) {
         form={form}
         name="basic"
         {...layout}
-        initialValues={{ name: undefined, templateId: undefined, type: "0", IsDelay: true }}
+        initialValues={{
+          name: undefined,
+          templateId: undefined,
+          type: "0",
+          IsDelay: true,
+        }}
         onFinish={onFinish}
         size="small"
       >
@@ -43,7 +48,10 @@ function AddForm(props) {
           rules={[{ required: true, message: "请选择发送模版!" }]}
         >
           <Form.Item name="templateId" noStyle>
-            <Input style={{ width: "280px", marginRight: 20 }} placeholder="请选择模版"/>
+            <Input
+              style={{ width: "280px", marginRight: 20 }}
+              placeholder="请选择模版"
+            />
           </Form.Item>
           <Space>
             <Button size="small" type="primary" onClick={selectTemplate}>
@@ -84,7 +92,11 @@ function AddForm(props) {
           name="SendPhone"
           rules={[{ required: true, message: "输入发送号码" }]}
         >
-          <TextArea row={3} style={{ width: "280px" }} placeholder="多个号码，请用英文逗号分开"/>
+          <TextArea
+            row={3}
+            style={{ width: "280px" }}
+            placeholder="多个号码，请用英文逗号分开"
+          />
         </Form.Item>
         <Form.Item
           wrapperCol={{

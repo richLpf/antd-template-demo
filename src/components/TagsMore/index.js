@@ -1,26 +1,27 @@
-import React, { Fragment } from 'react'
-import { Space, Tag } from "antd"
-import PropTypes from "prop-types"
+import React, { Fragment } from "react";
+import { Space, Tag } from "antd";
+import PropTypes from "prop-types";
 
-function TagsMore(props){
+function TagsMore(props) {
+  const { list = [] } = props;
 
-    const { list=[] } = props
-
-    return <Fragment>
-        <Space>
-            {list?.map(item => (
-                <Tag key={item}>{item}</Tag>
-            ))}
-        </Space>
+  return (
+    <Fragment>
+      <Space>
+        {list?.map((item) => (
+          <Tag key={item}>{item}</Tag>
+        ))}
+      </Space>
     </Fragment>
+  );
 }
 
 TagsMore.defaultProps = {
-    list: ["name"]
-}
+  list: ["name"],
+};
 
 TagsMore.propTypes = {
-    list: PropTypes.array
-}
+  list: PropTypes.array,
+};
 
-export default TagsMore
+export default TagsMore;

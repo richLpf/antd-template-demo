@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
-function EChart(){
-    return <div>
-        echart
-    </div>
+function EChart() {
+  return <div>echart</div>;
 }
 
-export default EChart
+export default EChart;

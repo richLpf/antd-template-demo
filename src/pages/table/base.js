@@ -1,16 +1,15 @@
 import React, { Fragment, useEffect, useState, useRef } from "react";
-import { Button } from "antd"
-import TableWrap from './component/table-wrap'
-import * as Api from '../../api'
+import { Button } from "antd";
+import TableWrap from "./component/table-wrap";
+import * as Api from "../../api";
 
 function TableBase() {
-
-  const [Data, setData] = useState([])
-  const tableRef = useRef()
+  const [Data, setData] = useState([]);
+  const tableRef = useRef();
 
   useEffect(() => {
-    getList({id: 1})
-  }, [])
+    getList({ id: 1 });
+  }, []);
 
   const columns = [
     {
@@ -23,7 +22,7 @@ function TableBase() {
       dataIndex: "age",
       key: "age",
       sorter: true,
-      render: val => `${val}岁`
+      render: (val) => `${val}岁`,
     },
     {
       title: "住址",
@@ -33,47 +32,51 @@ function TableBase() {
   ];
 
   const getList = (data) => {
-    Api.GetList(data).then(res => {
-      
-      const { Data } = JSON.parse(JSON.stringify(res))
-      console.log(Data)
-      setData(Data)
-      
-    })
-  }
+    Api.GetList(data).then((res) => {
+      const { Data } = JSON.parse(JSON.stringify(res));
+      console.log(Data);
+      setData(Data);
+    });
+  };
 
   const handleAdd = () => {
-    tableRef.current.fetchData()
+    tableRef.current.fetchData();
     const result = tableRef.current.data;
-    console.log("result", result)
-  }
+    console.log("result", result);
+  };
 
-  const leftAction = <Button type="primary" onClick={handleAdd}>添加</Button>
+  const leftAction = (
+    <Button type="primary" onClick={handleAdd}>
+      添加
+    </Button>
+  );
 
   return (
     <Fragment>
-      <TableWrap 
+      <TableWrap
         ref={tableRef}
         rowKey="key"
         download={{
           limit: 10000,
-          exportData: row => {
+          exportData: (row) => {
             return {
-              fields: columns.filter(item => item.key !== "actions").map(({title, key}) => ({
-                label: title,
-                value: key
-              })),
-              data: row.map(item => ({
+              fields: columns
+                .filter((item) => item.key !== "actions")
+                .map(({ title, key }) => ({
+                  label: title,
+                  value: key,
+                })),
+              data: row.map((item) => ({
                 ...item,
-                age: `${item.age}岁`
+                age: `${item.age}岁`,
               })),
-            }
-          }}
-        }
+            };
+          },
+        }}
         leftAction={leftAction}
-        query={Api.GetList} 
-        dataSource={Data} 
-        columns={columns} 
+        query={Api.GetList}
+        dataSource={Data}
+        columns={columns}
       />
     </Fragment>
   );

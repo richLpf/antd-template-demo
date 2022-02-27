@@ -7,7 +7,7 @@ function CardInfo(props) {
   const { data = {} } = props;
   const { title, desc, media, buttonList } = data;
 
-  console.log("meta", media)
+  console.log("meta", media);
 
   return (
     <Card

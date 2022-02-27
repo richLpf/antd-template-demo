@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
-import Chart from '../../components/Chart/apexcharts/Demo'
+import Chart from "../../components/Chart/apexcharts/Demo";
 
-function ChartDemo(){
-    return <Chart />
+function ChartDemo() {
+  return <Chart />;
 }
 
-export default ChartDemo
+export default ChartDemo;

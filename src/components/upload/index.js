@@ -2,10 +2,9 @@ import React, { Fragment, useState } from "react";
 import { message, Upload, Button } from "antd";
 import { LoadingOutlined, CloudUploadOutlined } from "@ant-design/icons";
 
+const imageTypeList = ["image/jpeg", "image/png", "image/jpg"];
 
-const imageTypeList = ['image/jpeg', 'image/png', 'image/jpg']
-
-function UploadBox({ value = {}, onChange, type='img' }) {
+function UploadBox({ value = {}, onChange, type = "img" }) {
   const [imageUrl, setImageUrl] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -23,7 +22,7 @@ function UploadBox({ value = {}, onChange, type='img' }) {
     showUploadList: false,
     action: `${process.env.REACT_APP_UPLOAD_API}/api/upload/`,
     beforeUpload(file, fileList) {
-      const isJpgOrPng = imageTypeList.includes(file.type)
+      const isJpgOrPng = imageTypeList.includes(file.type);
       if (!isJpgOrPng) {
         message.error("You can only upload JPG/PNG file!");
       }
@@ -56,7 +55,7 @@ function UploadBox({ value = {}, onChange, type='img' }) {
     showUploadList: false,
     action: `${process.env.REACT_APP_UPLOAD_API}/api/upload/`,
     beforeUpload(file, fileList) {
-      console.log("file", file, fileList)
+      console.log("file", file, fileList);
       setLoading(true);
       return true;
     },
@@ -102,7 +101,7 @@ function UploadBox({ value = {}, onChange, type='img' }) {
 
   return (
     <Fragment>
-      {type==='img'?
+      {type === "img" ? (
         <Upload {...filePropsImg}>
           <div style={{ cursor: "pointer", borderRadius: 4 }}>
             {value.imageUrl || imageUrl ? (
@@ -115,10 +114,12 @@ function UploadBox({ value = {}, onChange, type='img' }) {
               uploadButton
             )}
           </div>
-      </Upload>:
-      <Upload { ...filePropsFile }>
-        <Button type="primary">{loading ? '上传文件中' : '上传文件'}</Button>
-      </Upload>}
+        </Upload>
+      ) : (
+        <Upload {...filePropsFile}>
+          <Button type="primary">{loading ? "上传文件中" : "上传文件"}</Button>
+        </Upload>
+      )}
     </Fragment>
   );
 }

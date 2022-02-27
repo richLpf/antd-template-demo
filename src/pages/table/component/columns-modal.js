@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
-function ColumnsModal(){
-    return <div>
-
-    </div>
+function ColumnsModal() {
+  return <div></div>;
 }
 
-export default ColumnsModal
+export default ColumnsModal;

@@ -3,4 +3,6 @@
 
 echo "# Please include a useful commit message, $0"
 
+yarn prettier --write "src/**/*.js"
+
 git add .
