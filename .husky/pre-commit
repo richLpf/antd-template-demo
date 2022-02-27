@@ -5,7 +5,7 @@ node ".husky/scripts/index.js" $GIT_AUTHOR_NAME
 
 echo $GIT_EXEC_PATH
 
-echo $GIT_EDITOR
+# echo $GIT_EDITOR
 
 # yarn prettier --write "src/**/*.js" 
 
