@@ -1,9 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-echo "# Please include a useful commit message, $1"
-
-yarn prettier
-npx stylelint "**/*.css"
+echo "# Please include a useful commit message, $0"
 
 git add .
