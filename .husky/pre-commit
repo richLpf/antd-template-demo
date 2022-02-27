@@ -3,7 +3,7 @@
 
 yarn prettier --write "src/**/*.js" 
 
-git add .
+# git add .
 
 yarn eslint "src/**/*.js"
 
