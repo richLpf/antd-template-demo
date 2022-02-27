@@ -20,6 +20,7 @@ const ChartDemo = lazy(() => import("../pages/chart"));
 const AntvDemo = lazy(() => import("../pages/chart/antv"));
 const Debounce = lazy(() => import("../pages//lib/debounce"));
 const Context = lazy(() => import("../pages/hooks/context"));
+const Gray = lazy(() => import("../pages/gray"));
 
 const routes = [
   {
@@ -27,6 +28,12 @@ const routes = [
     name: "Dashboard",
     icon: <DesktopOutlined />,
     component: <Dashboard />,
+  },
+  {
+    key: "/gray",
+    name: "gray",
+    icon: <DesktopOutlined />,
+    component: <Gray />,
   },
   {
     name: "功能组件",

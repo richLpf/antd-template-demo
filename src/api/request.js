@@ -51,14 +51,24 @@ function request(params) {
 
     instance(params)
       .then((res) => {
-        if (res.data.RetCode === 10000) {
-          resolve([]);
-          // clearStorage("userInfo")
-          // ChangeLoginState({userInfo: {}})
+        const {
+          data: { RetCode, Message },
+          data,
+        } = res;
+        if (RetCode === 10000) {
           message.error("请登陆");
+          window.location.replace("/login");
           return;
+        } else if (RetCode !== 0) {
+          const log = {
+            request: params,
+            response: data,
+          };
+          console.error(log);
+          message.error(Message);
+          resolve(data);
         } else {
-          resolve(res.data);
+          resolve(data);
         }
       })
       .catch((err) => {

@@ -9,7 +9,7 @@ function TableBase() {
   const tableRef = useRef()
 
   useEffect(() => {
-    getList()
+    getList({id: 1})
   }, [])
 
   const columns = [
@@ -32,11 +32,13 @@ function TableBase() {
     },
   ];
 
-
   const getList = (data) => {
     Api.GetList(data).then(res => {
+      
       const { Data } = JSON.parse(JSON.stringify(res))
+      console.log(Data)
       setData(Data)
+      
     })
   }
 

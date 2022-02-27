@@ -136,6 +136,10 @@ const TableWrap = forwardRef((props, ref) => {
         setPagination({...pagination, Page, PageSize})
     }
 
+    const handleColumnsConfig = () => {
+        
+    }
+
     const CardExtra = <Space>
         <Input 
             size={size}
@@ -147,7 +151,7 @@ const TableWrap = forwardRef((props, ref) => {
         />
         <Button size={size} type="primary" loading={exportLoading} onClick={handleDownload} icon={<DownloadOutlined />}></Button>
         <Button size={size} type="primary" onClick={()=>fetchData({...toQueryParams()})} icon={<ReloadOutlined />}></Button>
-        <Button size={size} type="primary" onClick={()=>fetchData({...toQueryParams()})} icon={<SettingOutlined />}></Button>
+        <Button size={size} type="primary" onClick={()=>handleColumnsConfig()} icon={<SettingOutlined />}></Button>
     </Space>
 
     console.log("tableProps", tableProps())
@@ -187,7 +191,9 @@ TableWrap.propTypes = {
     leftAction: PropTypes.any, // 表格头部左侧按钮操作
     filterParams: PropTypes.object,
     size: PropTypes.oneOf(['small', 'large', 'middle']),
-    useBackendSearch: PropTypes.bool // 是否使用后端搜索
+    useBackendSearch: PropTypes.bool, // 是否使用后端搜索
+    defaultColumnsConfig: PropTypes.object,
+    changeColumnsConfig: PropTypes.func
 }
 
 export default TableWrap

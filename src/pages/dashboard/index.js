@@ -53,6 +53,7 @@ function Dashboard() {
       <p style={{}}>
         欢迎进入Antd Demo项目,项目介绍：
       </p>
+      <img src="http://10.23.23.123/a.png" alt="test pic"/>
       <List
         size="small"
         bordered
