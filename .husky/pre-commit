@@ -3,7 +3,7 @@
 
 node ".husky/scripts/index.js" $GIT_AUTHOR_NAME
 
-echo $GIT_EXEC_PATH
+echo $GIT_DIR
 
 # echo $GIT_EDITOR
 
