@@ -1,1 +1,1 @@
-console.log('index.js')
+console.log('this file is scripts')
