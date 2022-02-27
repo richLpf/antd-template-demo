@@ -1,10 +1,12 @@
 #!/bin/sh
 # . "$(dirname "$0")/_/husky.sh"
 
-yarn prettier --write "src/**/*.js" 
+node ".husky/scripts/index.js"
 
-git add .
+# yarn prettier --write "src/**/*.js" 
 
-yarn eslint "src/**/*.js"
+# git add .
+
+# yarn eslint "src/**/*.js"
 
 # yarn commitlint -e $HUSKY_GIT_PARAMS
