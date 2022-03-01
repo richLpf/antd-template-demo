@@ -32,6 +32,9 @@
     "prettier": "prettier --parser --write ./src/**/*.js",
     "logs": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
+  "husky": {
+    "pre-commit": "eslint"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
