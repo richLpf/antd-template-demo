@@ -1,16 +1,15 @@
 #!/bin/sh
 # . "$(dirname "$0")/_/husky.sh"
 
-node ".husky/scripts/index.js" $GIT_AUTHOR_NAME $GIT_HTTP_LOW_SPEED_LIMIT
+# node ".husky/scripts/index.js" $GIT_AUTHOR_NAME $GIT_HTTP_LOW_SPEED_LIMIT
 
-echo "$(dirname "$0")"
+# echo "$(dirname "$0")"
 
-# echo $GIT_EDITOR
+yarn eslint "src/**/*.js"
 
-# yarn prettier --write "src/**/*.js" 
+echo $GIT_EDITOR
 
-# git add .
+yarn prettier --write "src/**/*.js" 
 
-# yarn eslint "src/**/*.js"
+git add .
 
-# yarn commitlint -e $HUSKY_GIT_PARAMS

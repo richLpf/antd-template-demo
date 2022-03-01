@@ -3,4 +3,4 @@
 
 # echo "prepar-commit-msg"
 
-# yarn commitlint -e $HUSKY_GIT_PARAMS
+yarn commitlint -e $HUSKY_GIT_PARAMS
