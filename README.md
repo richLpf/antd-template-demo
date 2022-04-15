@@ -5,11 +5,11 @@
 项目进度
 - [x] 本地开发，接口反向代理
 - [x] 引入less
-- [ ] prettier + eslint + husky
+- [x] prettier + eslint + husky
 - [x] 全局化配置
     - [ ] 状态管理Redux
     - [ ] 中英文切换
-- [ ] 完成项目基于Docker的构建
+- [x] 完成项目基于Docker的构建
 - [ ] 面包屑处理
 - [ ] 基于Antd表格组件封装
     - [ ] 基于前端分页、后端分页、下载、刷新、自定义设置表头的表格
