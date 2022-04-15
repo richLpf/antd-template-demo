@@ -252,6 +252,10 @@ TableWrap.propTypes = {
   useBackendSearch: PropTypes.bool, // 是否使用后端搜索
   defaultColumnsConfig: PropTypes.object,
   changeColumnsConfig: PropTypes.func,
+  dataSource: PropTypes.array,
+  rowKey: PropTypes.string,
 };
+
+TableWrap.displayName = "TableWrap";
 
 export default TableWrap;

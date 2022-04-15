@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Form, Input } from "antd";
+import PropTypes from "prop-types";
 
 const CustomizedForm = ({ onChange, fields }) => (
   <Form
@@ -24,6 +25,11 @@ const CustomizedForm = ({ onChange, fields }) => (
     </Form.Item>
   </Form>
 );
+
+CustomizedForm.propTypes = {
+  onChange: PropTypes.object,
+  fields: PropTypes.object,
+};
 
 const Demo = () => {
   const [fields, setFields] = useState([

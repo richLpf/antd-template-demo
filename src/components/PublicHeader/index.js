@@ -2,6 +2,7 @@ import React from "react";
 import { Avatar, Dropdown, Menu, Button } from "antd";
 import { useNavigate } from "react-router-dom";
 import { UserOutlined } from "@ant-design/icons";
+import PropTypes from "prop-types";
 
 function PublicHeader(props) {
   const { user } = props;
@@ -49,4 +50,9 @@ function PublicHeader(props) {
     </div>
   );
 }
+
+PublicHeader.propTypes = {
+  user: PropTypes.string,
+};
+
 export default PublicHeader;

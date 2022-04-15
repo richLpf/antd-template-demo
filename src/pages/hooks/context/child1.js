@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import PropType from "prop-types";
 import { MyContent } from "./index";
 
 function Child({ data }) {
@@ -13,5 +14,9 @@ function Child({ data }) {
     </div>
   );
 }
+
+Child.propTypes = {
+  data: PropType.object,
+};
 
 export default Child;
