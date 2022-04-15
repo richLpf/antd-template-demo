@@ -1,3 +1,4 @@
+import locale from "../locale.json";
 // menu has child
 export const hasChild = (routes) => {
   return Array.isArray(routes.children) && routes.children.length > 0;
@@ -61,3 +62,27 @@ export function throttle(fn, threshhold = 160) {
 // }, delay)
 // };
 // };
+
+export function APIReport(RetCode, response, request) {
+  if (RetCode === -1) {
+    console.log("网络请求出错", response);
+  } else {
+    console.log("接口自定义错误");
+    console.log("response", response);
+    console.log("request", request);
+  }
+}
+
+// 将语言文件转化成对象
+export const getSystemLocale = (language) => {
+  return locale.reduce((prev, next) => {
+    const key = next.key;
+    prev[key] = next[language];
+    return prev;
+  }, {});
+};
+
+// 根据key显示中英文
+export const formatMessage = (localeMap, key) => {
+  return key && localeMap[key] ? localeMap[key] : key;
+};

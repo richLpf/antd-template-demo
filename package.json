@@ -44,13 +44,6 @@
       "eqeqeq": 0
     }
   },
-  "stylelint": {
-    "extends": "stylelint-config-standard",
-    "rules": {
-      "font-family-no-missing-generic-family-keyword": null,
-      "color-function-notation": null
-    }
-  },
   "browserslist": {
     "production": [
       ">0.2%",

@@ -1,0 +1,12 @@
+[
+    {
+        "key": "DEMO0001",
+        "zh_cn": "你好",
+        "en_us": "welcome"
+    },
+    {
+        "key": "DEMO0002",
+        "zh_cn": "用户名",
+        "en_us": "username"
+    }
+]

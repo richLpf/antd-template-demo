@@ -34,7 +34,7 @@ function TableBase() {
   const getList = (data) => {
     Api.GetList(data).then((res) => {
       const { Data } = JSON.parse(JSON.stringify(res));
-      console.log(Data);
+      // console.log(Data);
       setData(Data);
     });
   };

@@ -1,5 +1,6 @@
 import { message } from "antd";
 import axios from "axios";
+import { APIReport } from "../utils/common";
 // import { clearStorage, getStorage } from "src/storages"
 
 const config = {};
@@ -45,7 +46,8 @@ function request(params) {
         return res;
       },
       (err) => {
-        return reject(err);
+        APIReport(-1, err.message);
+        return reject(err.message);
       }
     );
 
@@ -60,11 +62,7 @@ function request(params) {
           window.location.replace("/login");
           return;
         } else if (RetCode !== 0) {
-          const log = {
-            request: params,
-            response: data,
-          };
-          console.error(log);
+          APIReport(RetCode, data, params);
           message.error(Message);
           resolve(data);
         } else {

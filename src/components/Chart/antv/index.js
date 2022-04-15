@@ -13,7 +13,7 @@ function Chart(props) {
       yField: "value",
       ...options,
     }),
-    [options]
+    []
   );
 
   useEffect(() => {
@@ -28,7 +28,7 @@ function Chart(props) {
       }
       chatItem.render();
     }
-  }, [renderOptions, container]);
+  }, [renderOptions, container, options, type]);
 
   return <div style={style} ref={container}></div>;
 }

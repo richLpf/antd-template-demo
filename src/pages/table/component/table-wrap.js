@@ -49,7 +49,6 @@ const TableWrap = forwardRef((props, ref) => {
       return query(data)
         .then((res) => {
           const { Data, Total } = JSON.parse(JSON.stringify(res));
-          console.log("toata", Total);
           setData(Data);
           setTotal(Total);
           setLoading(false);
@@ -126,6 +125,13 @@ const TableWrap = forwardRef((props, ref) => {
     }
   };
 
+  const onChange = useCallback(
+    (Page, PageSize) => {
+      setPagination({ ...pagination, Page, PageSize });
+    },
+    [pagination]
+  );
+
   const tableProps = useCallback(() => {
     return {
       dataSource:
@@ -154,6 +160,7 @@ const TableWrap = forwardRef((props, ref) => {
       scroll: { x: true },
     };
   }, [
+    onChange,
     Data,
     FuzzySearch,
     total,
@@ -163,17 +170,12 @@ const TableWrap = forwardRef((props, ref) => {
   ]);
 
   const onSearch = () => {
-    console.log("查询", FuzzySearch);
     if (!FuzzySearch || (useBackendPagination && useBackendSearch)) {
       return;
     }
     // 后端分页查询
     setPagination({ Page: 0, PageSize: 0 });
     fetchData({ FuzzySearch, Page: 0, PageSize: 10 });
-  };
-  const onChange = (Page, PageSize) => {
-    console.log("val", Page, PageSize);
-    setPagination({ ...pagination, Page, PageSize });
   };
 
   const handleColumnsConfig = () => {};
@@ -209,8 +211,6 @@ const TableWrap = forwardRef((props, ref) => {
       ></Button>
     </Space>
   );
-
-  console.log("tableProps", tableProps());
 
   return (
     <Card size={size} title={leftAction} extra={CardExtra}>
