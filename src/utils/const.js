@@ -64,3 +64,11 @@ export const templateTypeList = [
     value: "4",
   },
 ];
+
+// export const defaultLanguage = "zh_cn";
+export const defaultLanguage = "en_us";
+
+export const languageMap = {
+  ZH_CN: "zh_cn",
+  EN_US: "en_us",
+};

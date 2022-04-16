@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Form, Input, Select, Button } from "antd";
+import PropTypes from "prop-types";
+
 const { Option } = Select;
 
 const PriceInput = ({ value = {}, onChange }) => {
@@ -64,6 +66,11 @@ const PriceInput = ({ value = {}, onChange }) => {
       </Select>
     </span>
   );
+};
+
+PriceInput.propTypes = {
+  value: PropTypes.object,
+  onChange: PropTypes.func,
 };
 
 const DefineForm = () => {

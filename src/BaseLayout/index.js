@@ -4,6 +4,7 @@ import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import routes from "../router";
 import { hasChild } from "../utils/common";
 import PublicHeader from "../components/PublicHeader";
+import Breadcrumb from "src/components/Breadcrumb";
 
 const { Content, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -86,22 +87,24 @@ function BaseLayout() {
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
-      <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
-        <div className="logo" style={{ textAlign: "center", borderRadius: 5 }}>
-          Demo
-        </div>
-        <Menu
-          theme="dark"
-          selectedKeys={selectedKeys}
-          mode="inline"
-          onSelect={onChangeMenu}
-        >
-          {genMenus(routes)}
-        </Menu>
-      </Sider>
+      <PublicHeader user={username} />
       <Layout className="site-layout">
-        <PublicHeader user={username} />
+        <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
+          <Menu
+            theme="dark"
+            selectedKeys={selectedKeys}
+            mode="inline"
+            onSelect={onChangeMenu}
+          >
+            {genMenus(routes)}
+          </Menu>
+        </Sider>
         <Content style={{ margin: "0 16px", padding: 10 }}>
+          <div style={{ marginBottom: 10 }}>
+            <Breadcrumb
+              routeChange={(pathname) => setSelectedKeys([pathname])}
+            />
+          </div>
           <React.Suspense
             fallback={
               <div style={{ marginTop: 200, textAlign: "center" }}>

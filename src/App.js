@@ -1,41 +1,35 @@
-import React, { useState, useMemo } from "react";
+import React, { useMemo, useEffect, useState } from "react";
 import zhCN from "antd/lib/locale/zh_CN";
 import enUS from "antd/lib/locale/en_US";
-import { ConfigProvider, Radio, DatePicker } from "antd";
+import { ConfigProvider } from "antd";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { getSystemLocale } from "./utils/common";
+import { getSessionStorage, saveSessionStorage } from "./utils/common";
+import { defaultLanguage } from "./utils/const";
 import BaseLayout from "./BaseLayout";
 import Login from "./pages/login";
 import "./App.less";
 
-const defaultLanguage = "zh_cn";
-
-const languageMap = {
+const uiLanguageMap = {
   zh_cn: zhCN,
   en_us: enUS,
 };
 
-const { RangePicker } = DatePicker;
-
 function App() {
   const [locale, setLocale] = useState(defaultLanguage);
 
-  const getLocale = useMemo(() => languageMap[locale], [locale]);
+  useEffect(() => {
+    let localeLanguage = getSessionStorage("template_locale");
+    if (!locale) {
+      saveSessionStorage("template_locale", defaultLanguage);
+    }
+    setLocale(localeLanguage);
+  }, []);
 
-  const handleChange = (val) => {
-    setLocale(val.target.value);
-  };
-
-  console.log("11111", getSystemLocale(defaultLanguage));
+  const getLocale = useMemo(() => uiLanguageMap[locale], [locale]);
 
   return (
     <div className="App">
-      <Radio.Group name="group" defaultValue={locale} onChange={handleChange}>
-        <Radio value={"zh_cn"}>中</Radio>
-        <Radio value={"es_us"}>EN</Radio>
-      </Radio.Group>
       <ConfigProvider locale={getLocale}>
-        <RangePicker style={{ width: 200 }} />
         <BrowserRouter>
           <Routes>
             <Route path="login" element={<Login />} />

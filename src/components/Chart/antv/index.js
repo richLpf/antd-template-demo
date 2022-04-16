@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef } from "react";
 import { Line, Liquid } from "@antv/g2plot";
-
+import PropTypes from "prop-types";
 function Chart(props) {
   const { style, options, type = "Line" } = props;
 
@@ -32,5 +32,11 @@ function Chart(props) {
 
   return <div style={style} ref={container}></div>;
 }
+
+Chart.propTypes = {
+  style: PropTypes.object,
+  options: PropTypes.object,
+  type: PropTypes.string,
+};
 
 export default React.memo(Chart);

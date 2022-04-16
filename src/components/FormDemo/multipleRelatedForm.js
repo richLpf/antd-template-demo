@@ -9,6 +9,8 @@ import {
   Typography,
 } from "antd";
 import { SmileOutlined, UserOutlined } from "@ant-design/icons";
+import PropTypes from "prop-types";
+
 const layout = {
   labelCol: {
     span: 2,
@@ -83,6 +85,11 @@ const ModalForm = ({ visible, onCancel }) => {
       </Form>
     </Modal>
   );
+};
+
+ModalForm.propTypes = {
+  visible: PropTypes.bool,
+  onCancel: PropTypes.func,
 };
 
 const MultipleRelatedForm = () => {

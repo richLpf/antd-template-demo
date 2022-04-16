@@ -1,4 +1,5 @@
 import locale from "../locale.json";
+import { defaultLanguage } from "./const";
 // menu has child
 export const hasChild = (routes) => {
   return Array.isArray(routes.children) && routes.children.length > 0;
@@ -52,17 +53,6 @@ export function throttle(fn, threshhold = 160) {
   };
 }
 
-// export function debounce(func, delay=2000) {
-// var timeout;
-// return function(e) {
-// clearTimeout(timeout);
-// var context = this, args = arguments
-// timeout = setTimeout(function(){
-// func.apply(context, args);
-// }, delay)
-// };
-// };
-
 export function APIReport(RetCode, response, request) {
   if (RetCode === -1) {
     console.log("网络请求出错", response);
@@ -83,6 +73,19 @@ export const getSystemLocale = (language) => {
 };
 
 // 根据key显示中英文
-export const formatMessage = (localeMap, key) => {
+export const formatMessage = (key) => {
+  const language = getSessionStorage("template_locale") || defaultLanguage;
+  console.log("language", language, getSessionStorage("template_locale"));
+  const localeMap = getSystemLocale(language);
+  console.log("localeMap", localeMap);
   return key && localeMap[key] ? localeMap[key] : key;
+};
+
+// session
+export const saveSessionStorage = (key, value) => {
+  return sessionStorage.setItem(key, value);
+};
+
+export const getSessionStorage = (key) => {
+  return sessionStorage.getItem(key);
 };

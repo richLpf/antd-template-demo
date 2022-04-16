@@ -1,5 +1,11 @@
 /* config-overrides.js */
-const { override, fixBabelImports, addLessLoader } = require("customize-cra");
+const { 
+    override, 
+    fixBabelImports, 
+    addLessLoader,
+    addWebpackAlias
+} = require("customize-cra");
+const path = require('path')
 
 module.exports = override(
     fixBabelImports("import", {
@@ -11,5 +17,8 @@ module.exports = override(
         lessOptions: {
             javascriptEnabled: true
         }
-    })   
+    }),
+    addWebpackAlias({
+        src: path.resolve(__dirname, "./src"),
+    })  
 );

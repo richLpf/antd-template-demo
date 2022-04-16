@@ -1,12 +1,52 @@
 [
     {
         "key": "DEMO0001",
-        "zh_cn": "你好",
-        "en_us": "welcome"
+        "zh_cn": "首页",
+        "en_us": "Home"
     },
     {
         "key": "DEMO0002",
         "zh_cn": "用户名",
         "en_us": "username"
+    },
+    {
+        "key": "DEMO0003",
+        "zh_cn": "功能组件",
+        "en_us": "Function"
+    },
+    {
+        "key": "DEMO0004",
+        "zh_cn": "表格组件",
+        "en_us": "Table"
+    },
+    {
+        "key": "DEMO0005",
+        "zh_cn": "表单组件",
+        "en_us": "Form"
+    },
+    {
+        "key": "DEMO0006",
+        "zh_cn": "业务组件",
+        "en_us": "Business"
+    },
+    {
+        "key": "DEMO0007",
+        "zh_cn": "常见功能组件",
+        "en_us": "Component"
+    },
+    {
+        "key": "DEMO0008",
+        "zh_cn": "图表组件",
+        "en_us": "Chart"
+    },
+    {
+        "key": "DEMO0009",
+        "zh_cn": "常用函数实现",
+        "en_us": "Function"
+    },
+    {
+        "key": "DEMO0010",
+        "zh_cn": "防抖节流",
+        "en_us": "Debounce"
     }
 ]

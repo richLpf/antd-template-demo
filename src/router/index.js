@@ -7,6 +7,7 @@ import {
   LineChartOutlined,
   FunctionOutlined,
 } from "@ant-design/icons";
+import { formatMessage } from "src/utils/common";
 
 const Dashboard = lazy(() => import("../pages/dashboard"));
 // const Dodder = lazy(() => import("../pages/fodder"));
@@ -20,7 +21,7 @@ const ChartDemo = lazy(() => import("../pages/chart"));
 const AntvDemo = lazy(() => import("../pages/chart/antv"));
 const Debounce = lazy(() => import("../pages//lib/debounce"));
 const Context = lazy(() => import("../pages/hooks/context"));
-const Gray = lazy(() => import("../pages/gray"));
+// const Gray = lazy(() => import("../pages/gray"));
 
 const routes = [
   {
@@ -30,48 +31,42 @@ const routes = [
     component: <Dashboard />,
   },
   {
-    key: "/gray",
-    name: "gray",
-    icon: <DesktopOutlined />,
-    component: <Gray />,
-  },
-  {
-    name: "功能组件",
+    name: formatMessage("DEMO0003"),
     key: "/widget",
     hidden: false,
     icon: <FireOutlined />,
     component: <Widget />,
   },
   {
-    name: "表格组件",
+    name: formatMessage("DEMO0004"),
     key: "/table",
     hidden: false,
     icon: <TableOutlined />,
     component: <Table />,
   },
   {
-    name: "表单组件",
+    name: formatMessage("DEMO0005"),
     key: "/form",
     hidden: false,
     icon: <SettingOutlined />,
     component: <Business />,
   },
   {
-    name: "业务组件合集",
+    name: formatMessage("DEMO0006"),
     key: "/business",
     hidden: true,
     icon: <SettingOutlined />,
     component: <Business />,
   },
   {
-    name: "常见功能组件",
+    name: formatMessage("DEMO0007"),
     key: "/component",
     hidden: true,
     icon: <SettingOutlined />,
     component: <Business />,
   },
   {
-    name: "图表组件",
+    name: formatMessage("DEMO0008"),
     key: "/chart",
     icon: <LineChartOutlined />,
     children: [
@@ -88,12 +83,12 @@ const routes = [
     ],
   },
   {
-    name: "常见函数实现",
+    name: formatMessage("DEMO0009"),
     key: "/func",
     icon: <FunctionOutlined />,
     children: [
       {
-        name: "防抖和节流",
+        name: formatMessage("DEMO0010"),
         key: "/func/debounce",
         component: <Debounce />,
       },

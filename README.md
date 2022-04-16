@@ -7,16 +7,18 @@
 - [x] 引入less
 - [x] prettier + eslint + husky
 - [x] 全局化配置
-    - [ ] 状态管理Redux
-    - [ ] 中英文切换
+    - [x] 中英文切换
 - [x] 完成项目基于Docker的构建
-- [ ] 面包屑处理
+- [x] webpack引入路径别名
+- [x] 面包屑处理
+- [x] Mock数据
 - [ ] 基于Antd表格组件封装
     - [ ] 基于前端分页、后端分页、下载、刷新、自定义设置表头的表格
     - [ ] excel导入表格
     - [ ] 表格筛选
 - [ ] 拖拽工作台
 - [ ] 引导页
+- [ ] 状态管理Redux
 - [ ] redux的引入
 - [ ] 路由权限设计
 - [ ] 表单封装
@@ -26,16 +28,6 @@
 - [ ] 中后台项目，不同风格的登录页面
 - [ ] 换肤效果
 
-## 关于项目中中英文切换有两部分
-
-- 项目UI框架（antd）的中英文配置[中英文配置](https://ant.design/components/config-provider-cn/)
-- 项目中业务代码中英文翻译
-
-- 定义变量控制中英文
-- 配置ui框架的中英文
-- 自定义的中英文，转化成map
-- 全局挂载存储，session/reduce/window/全局变量
-- 读取变量翻译
 
 ## 
 
@@ -104,6 +96,8 @@ yarn start
 ## 八、Q&A
 
 - 前端反向代理配置
+- 开发阶段在eslint编译不通过会阻止程序运行，如何处理？
+https://stackoverflow.com/questions/64518226/my-create-react-app-is-failing-to-compile-due-to-eslint-error
 
 ## 九、优秀的demo项目整理
 - [react-antd-admin](https://nlrx.gitee.io/react-antd-admin-template/#/dashboard)

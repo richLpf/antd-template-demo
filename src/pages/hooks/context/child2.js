@@ -6,9 +6,7 @@ function diff(prev, next) {
   return true;
 }
 
-function Child2({ data }) {
-  console.log("组件二的数据", data);
-
+function Child2() {
   return (
     <>
       <MyContent.Consumer>

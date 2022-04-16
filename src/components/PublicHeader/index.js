@@ -1,8 +1,10 @@
 import React from "react";
 import { Avatar, Dropdown, Menu, Button } from "antd";
+import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import { UserOutlined } from "@ant-design/icons";
-import PropTypes from "prop-types";
+import { languageMap } from "../../utils/const";
+import { saveSessionStorage } from "../../utils/common";
 
 function PublicHeader(props) {
   const { user } = props;
@@ -12,6 +14,11 @@ function PublicHeader(props) {
   const handleLoginOut = () => {
     sessionStorage.removeItem("username");
     navigate("login");
+  };
+
+  const changeLanguage = (language) => {
+    saveSessionStorage("template_locale", language);
+    window.location.reload();
   };
 
   const menu = (
@@ -34,9 +41,19 @@ function PublicHeader(props) {
   );
 
   return (
-    <div style={{ height: 40, background: "#fff", padding: "0 30px" }}>
+    <div style={{ height: 40, background: "#1e262c" }}>
+      <div className="logo" style={{ textAlign: "center", borderRadius: 5 }}>
+        Demo
+      </div>
       <Dropdown overlay={menu} placement="bottomRight" arrow>
-        <div style={{ float: "right", marginTop: 6, cursor: "pointer" }}>
+        <div
+          style={{
+            float: "right",
+            marginTop: 6,
+            marginRight: 10,
+            cursor: "pointer",
+          }}
+        >
           <Avatar
             style={{ display: "inline-block", marginRight: 5 }}
             size={28}
@@ -47,6 +64,14 @@ function PublicHeader(props) {
           </div>
         </div>
       </Dropdown>
+      <div style={{ float: "right", marginRight: 20, color: "#fff" }}>
+        <div
+          style={{ display: "inline-block", marginTop: 10, cursor: "pointer" }}
+        >
+          <span onClick={() => changeLanguage(languageMap.ZH_CN)}>CN</span> /{" "}
+          <span onClick={() => changeLanguage(languageMap.EN_US)}>EN</span>
+        </div>
+      </div>
     </div>
   );
 }
