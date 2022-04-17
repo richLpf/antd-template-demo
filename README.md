@@ -93,7 +93,7 @@ yarn start
 
 首页
 
-![首页](https://cdn.jsdelivr.net/gh/richLpf/pictures@main/gitbook/1639620462711dashboard.png)
+![首页](https://cdn.jsdelivr.net/gh/richLpf/pictures@main/gitbook/1650191170715dashboard.png)
 
 图表
 
