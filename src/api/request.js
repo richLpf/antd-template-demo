@@ -1,7 +1,5 @@
 import { message } from "antd";
 import axios from "axios";
-import { APIReport } from "../utils/common";
-// import { clearStorage, getStorage } from "src/storages"
 
 const config = {};
 if (process.env.REACT_APP_ENV !== "development") {
@@ -46,7 +44,6 @@ function request(params) {
         return res;
       },
       (err) => {
-        APIReport(-1, err.message);
         return reject(err.message);
       }
     );
@@ -62,7 +59,6 @@ function request(params) {
           window.location.replace("/login");
           return;
         } else if (RetCode !== 0) {
-          APIReport(RetCode, data, params);
           message.error(Message);
           resolve(data);
         } else {

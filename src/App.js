@@ -1,10 +1,11 @@
-import React, { useMemo, useEffect, useState } from "react";
+import React, { useMemo, useEffect } from "react";
 import zhCN from "antd/lib/locale/zh_CN";
 import enUS from "antd/lib/locale/en_US";
 import { ConfigProvider } from "antd";
+import { useSelector, useDispatch } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { getSessionStorage, saveSessionStorage } from "./utils/common";
-import { defaultLanguage } from "./utils/const";
+import { getSessionStorage } from "./utils/common";
+import { switchLanguage } from "./redux/systemStore";
 import BaseLayout from "./BaseLayout";
 import Login from "./pages/login";
 import "./App.less";
@@ -15,14 +16,18 @@ const uiLanguageMap = {
 };
 
 function App() {
-  const [locale, setLocale] = useState(defaultLanguage);
+  // const [locale, setLocale] = useState(defaultLanguage);
+  const locale = useSelector((state) => {
+    console.log("state", state);
+    return state.systemStore.language;
+  });
+  const dispatch = useDispatch();
 
   useEffect(() => {
     let localeLanguage = getSessionStorage("template_locale");
-    if (!locale) {
-      saveSessionStorage("template_locale", defaultLanguage);
+    if (localeLanguage && locale !== localeLanguage) {
+      dispatch(switchLanguage(localeLanguage));
     }
-    setLocale(localeLanguage);
   }, []);
 
   const getLocale = useMemo(() => uiLanguageMap[locale], [locale]);

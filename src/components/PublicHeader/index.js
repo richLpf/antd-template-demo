@@ -1,13 +1,35 @@
 import React from "react";
-import { Avatar, Dropdown, Menu, Button } from "antd";
+import { Avatar, Dropdown, Menu, Button, Badge } from "antd";
 import PropTypes from "prop-types";
+import { useSelector, useDispatch } from "react-redux";
+import screenfull from "screenfull";
 import { useNavigate } from "react-router-dom";
-import { UserOutlined } from "@ant-design/icons";
+import {
+  UserOutlined,
+  BellOutlined,
+  FullscreenOutlined,
+  FullscreenExitOutlined,
+} from "@ant-design/icons";
 import { languageMap } from "../../utils/const";
-import { saveSessionStorage } from "../../utils/common";
+import { toggleScreen } from "../../redux/systemStore";
+import { saveSessionStorage, formatMessage } from "../../utils/common";
+import Image from "../../assets/images/icon.png";
+import "./header.less";
 
 function PublicHeader(props) {
   const { user } = props;
+
+  const dispatch = useDispatch();
+
+  const language = useSelector((state) => {
+    return state.systemStore.language;
+  });
+
+  const isScreenFull = useSelector((state) => {
+    return state.systemStore.isScreenFull;
+  });
+
+  console.log("isScreenFull", isScreenFull);
 
   let navigate = useNavigate();
 
@@ -19,6 +41,14 @@ function PublicHeader(props) {
   const changeLanguage = (language) => {
     saveSessionStorage("template_locale", language);
     window.location.reload();
+  };
+
+  const handleOpen = (isFull) => {
+    console.log("isFull", isFull);
+    if (screenfull.isEnabled) {
+      screenfull.toggle();
+    }
+    dispatch(toggleScreen(isFull));
   };
 
   const menu = (
@@ -41,36 +71,42 @@ function PublicHeader(props) {
   );
 
   return (
-    <div style={{ height: 40, background: "#1e262c" }}>
-      <div className="logo" style={{ textAlign: "center", borderRadius: 5 }}>
-        Demo
+    <div className="public-header">
+      <div className="logo">
+        <img src={Image} />
+        {formatMessage("DEMO0002")}
       </div>
       <Dropdown overlay={menu} placement="bottomRight" arrow>
-        <div
-          style={{
-            float: "right",
-            marginTop: 6,
-            marginRight: 10,
-            cursor: "pointer",
-          }}
-        >
-          <Avatar
-            style={{ display: "inline-block", marginRight: 5 }}
-            size={28}
-            icon={<UserOutlined />}
-          />
-          <div style={{ display: "inline-block", color: "#7687a4" }}>
-            {user ? user : null}
-          </div>
+        <div className="avatar-user">
+          <Avatar className="avatar" size={28} icon={<UserOutlined />} />
+          <div className="user">{user ? user : null}</div>
         </div>
       </Dropdown>
-      <div style={{ float: "right", marginRight: 20, color: "#fff" }}>
-        <div
-          style={{ display: "inline-block", marginTop: 10, cursor: "pointer" }}
-        >
-          <span onClick={() => changeLanguage(languageMap.ZH_CN)}>CN</span> /{" "}
-          <span onClick={() => changeLanguage(languageMap.EN_US)}>EN</span>
+      <div className="language-box">
+        <div className="language">
+          {language === languageMap.EN_US && (
+            <span onClick={() => changeLanguage(languageMap.ZH_CN)}>中文</span>
+          )}
+          {language === languageMap.ZH_CN && (
+            <span onClick={() => changeLanguage(languageMap.EN_US)}>EN</span>
+          )}
         </div>
+      </div>
+      <Badge dot={true} size="small" className="bellOut">
+        <BellOutlined className="bellOut-icon" />
+      </Badge>
+      <div className="screenFull">
+        {isScreenFull ? (
+          <FullscreenExitOutlined
+            className="text-bottom"
+            onClick={() => handleOpen(false)}
+          />
+        ) : (
+          <FullscreenOutlined
+            className="text-bottom"
+            onClick={() => handleOpen(true)}
+          />
+        )}
       </div>
     </div>
   );

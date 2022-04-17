@@ -16,7 +16,7 @@ export function debounce(cb, wait = 1000) {
   };
 }
 
-export function throttle1(func, delay = 1000) {
+export function throttle(func, delay = 1000) {
   let isWorking = false;
   return (params) => {
     if (isWorking) {
@@ -28,39 +28,6 @@ export function throttle1(func, delay = 1000) {
       isWorking = false;
     }, delay);
   };
-}
-
-// 多次触发，每隔一段时间执行一次
-export function throttle(fn, threshhold = 160) {
-  var timeout;
-  var start = new Date();
-  return function () {
-    var context = this,
-      args = arguments,
-      curr = new Date() - 0;
-
-    clearTimeout(timeout); //总是干掉事件回调
-    if (curr - start >= threshhold) {
-      console.log("now", curr, curr - start); //注意这里相减的结果，都差不多是160左右
-      fn.apply(context, args); //只执行一部分方法，这些方法是在某个时间段内执行一次
-      start = curr;
-    } else {
-      //让方法在脱离事件后也能执行一次
-      timeout = setTimeout(function () {
-        fn.apply(context, args);
-      }, threshhold);
-    }
-  };
-}
-
-export function APIReport(RetCode, response, request) {
-  if (RetCode === -1) {
-    console.log("网络请求出错", response);
-  } else {
-    console.log("接口自定义错误");
-    console.log("response", response);
-    console.log("request", request);
-  }
 }
 
 // 将语言文件转化成对象
@@ -75,9 +42,7 @@ export const getSystemLocale = (language) => {
 // 根据key显示中英文
 export const formatMessage = (key) => {
   const language = getSessionStorage("template_locale") || defaultLanguage;
-  console.log("language", language, getSessionStorage("template_locale"));
   const localeMap = getSystemLocale(language);
-  console.log("localeMap", localeMap);
   return key && localeMap[key] ? localeMap[key] : key;
 };
 

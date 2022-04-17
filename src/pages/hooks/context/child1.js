@@ -16,7 +16,7 @@ function Child({ data }) {
 }
 
 Child.propTypes = {
-  data: PropType.object,
+  data: PropType.number,
 };
 
 export default Child;

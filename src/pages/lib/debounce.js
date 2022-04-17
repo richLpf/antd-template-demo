@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Input, Card } from "antd";
-import { debounce, throttle1 } from "../../utils/common";
+import { debounce, throttle } from "../../utils/common";
 
 function Debounce() {
   const [value, setValue] = useState(undefined);
@@ -11,7 +11,7 @@ function Debounce() {
 
   const debounceRef = useRef(debounce(getQueryList, 1000));
 
-  const throttleRef = useRef(throttle1(getQueryList, 1000));
+  const throttleRef = useRef(throttle(getQueryList, 1000));
 
   const onChange = (e) => {
     console.log("防抖-连续输入");

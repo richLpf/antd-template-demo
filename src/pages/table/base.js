@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState, useRef } from "react";
-import { Button } from "antd";
-import TableWrap from "./component/table-wrap";
+import { Button, Space } from "antd";
+import UTable from "src/components/UTable";
 import * as Api from "../../api";
 
 function TableBase() {
@@ -11,9 +11,11 @@ function TableBase() {
     getList({ id: 1 });
   }, []);
 
+  document.title = "test";
+
   const columns = [
     {
-      title: "姓名",
+      title: "姓名名字名字名",
       dataIndex: "name",
       key: "name",
     },
@@ -34,7 +36,6 @@ function TableBase() {
   const getList = (data) => {
     Api.GetList(data).then((res) => {
       const { Data } = JSON.parse(JSON.stringify(res));
-      // console.log(Data);
       setData(Data);
     });
   };
@@ -46,16 +47,19 @@ function TableBase() {
   };
 
   const leftAction = (
-    <Button type="primary" onClick={handleAdd}>
-      添加
-    </Button>
+    <Space>
+      <Button type="primary" onClick={handleAdd}>
+        添加
+      </Button>
+    </Space>
   );
 
   return (
     <Fragment>
-      <TableWrap
+      <UTable
         ref={tableRef}
         rowKey="key"
+        storeKey="base-table"
         download={{
           limit: 10000,
           exportData: (row) => {

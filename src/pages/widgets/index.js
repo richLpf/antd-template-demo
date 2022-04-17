@@ -8,10 +8,10 @@ function Widgets() {
   return (
     <Card>
       <Tabs>
-        <TabPane key={1} title="功能组件一" tab="first">
+        <TabPane key={1} title="markdown" tab="富文本">
           <TagsMore />
         </TabPane>
-        <TabPane key={2} title="功能组件二" tab="second"></TabPane>
+        <TabPane key={2} title="" tab="second"></TabPane>
       </Tabs>
     </Card>
   );

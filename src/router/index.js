@@ -14,7 +14,7 @@ const Dashboard = lazy(() => import("../pages/dashboard"));
 // const Template = lazy(() => import("../pages/template"));
 // const CreateTemplate = lazy(() => import("../pages/template/create-form"));
 // const Message = lazy(() => import("../pages/message/send-task"));
-const Business = lazy(() => import("../pages/business"));
+// const Business = lazy(() => import("../pages/business"));
 const Table = lazy(() => import("../pages/table"));
 const Widget = lazy(() => import("../pages/widgets"));
 const ChartDemo = lazy(() => import("../pages/chart"));
@@ -49,21 +49,21 @@ const routes = [
     key: "/form",
     hidden: false,
     icon: <SettingOutlined />,
-    component: <Business />,
+    component: <Table />,
   },
   {
     name: formatMessage("DEMO0006"),
     key: "/business",
     hidden: true,
     icon: <SettingOutlined />,
-    component: <Business />,
+    component: <Table />,
   },
   {
     name: formatMessage("DEMO0007"),
     key: "/component",
     hidden: true,
     icon: <SettingOutlined />,
-    component: <Business />,
+    component: <Table />,
   },
   {
     name: formatMessage("DEMO0008"),
