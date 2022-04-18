@@ -48,9 +48,18 @@ export const formatMessage = (key) => {
 
 // session
 export const saveSessionStorage = (key, value) => {
-  return sessionStorage.setItem(key, value);
+  try {
+    window.sessionStorage.setItem(key, JSON.stringify(value));
+  } catch (e) {
+    console.log(e.message);
+  }
 };
 
 export const getSessionStorage = (key) => {
-  return sessionStorage.getItem(key);
+  const value = window.sessionStorage.getItem(key);
+  try {
+    return JSON.parse(value);
+  } catch (e) {
+    return value;
+  }
 };

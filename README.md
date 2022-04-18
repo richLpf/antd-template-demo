@@ -22,10 +22,13 @@
     - [x] 增加国际化语言优化显示
     - [x] 增加提示信息
     - [x] 全屏展示
+    - [x] 组件型号切换(暂时没有配置入口)
     - [ ] 全局搜索处理
-    - [ ] 组件型号切换
     - [ ] 换肤效果切换
     - [ ] 网络情况检测
+- [ ] 工作台
+    - [ ] 常见工作台
+    - [ ] 拖拽工作台
 - [ ] 切换页面页面meta跟着改变
 - [ ] Mock数据生成和导出
 - [ ] Excel模块处理
@@ -33,9 +36,6 @@
     - [ ] 导出当前表格Excel
     - [ ] 导出API返回Excel
     - [ ] 导出压缩包
-- [ ] 工作台
-    - [ ] 常见工作台
-    - [ ] 拖拽工作台
 - [ ] 组件系列
     - [ ] 待办页
     - [ ] 时间展示
@@ -132,6 +132,7 @@ yarn start
 - 前端反向代理配置
 - 开发阶段在eslint编译不通过会阻止程序运行，如何处理？
 https://stackoverflow.com/questions/64518226/my-create-react-app-is-failing-to-compile-due-to-eslint-error
+- screenfull编译报错，使用5.1.0版本
 
 ## 九、优秀的demo项目整理
 - [react-antd-admin](https://nlrx.gitee.io/react-antd-admin-template/#/dashboard)

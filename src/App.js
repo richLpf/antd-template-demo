@@ -16,17 +16,20 @@ const uiLanguageMap = {
 };
 
 function App() {
-  // const [locale, setLocale] = useState(defaultLanguage);
-  const locale = useSelector((state) => {
-    console.log("state", state);
-    return state.systemStore.language;
-  });
   const dispatch = useDispatch();
+
+  const { locale, componentSize } = useSelector((state) => {
+    return state.systemStore;
+  });
 
   useEffect(() => {
     let localeLanguage = getSessionStorage("template_locale");
     if (localeLanguage && locale !== localeLanguage) {
       dispatch(switchLanguage(localeLanguage));
+    }
+    let localeComponentSize = getSessionStorage("template_size");
+    if (localeComponentSize && componentSize !== localeComponentSize) {
+      dispatch();
     }
   }, []);
 
@@ -34,7 +37,7 @@ function App() {
 
   return (
     <div className="App">
-      <ConfigProvider locale={getLocale}>
+      <ConfigProvider locale={getLocale} componentSize={componentSize}>
         <BrowserRouter>
           <Routes>
             <Route path="login" element={<Login />} />
