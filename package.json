@@ -26,7 +26,9 @@
     "xlsx": "^0.18.5"
   },
   "scripts": {
-    "start": "cross-env REACT_APP_ENV=production react-app-rewired start",
+    "start": "npm-run-all --parallel start:*",
+    "start:main": "cross-env REACT_APP_ENV=production react-app-rewired start",
+    "start:mock": "u-admin-cli mock -t restful",
     "build:pre": "cross-env REACT_APP_ENV=development react-app-rewired build",
     "build:prod": "cross-env REACT_APP_ENV=production react-app-rewired build",
     "deploy:pre": "./deploy/build.sh pre",
@@ -73,9 +75,11 @@
     "less": "^4.1.2",
     "less-loader": "^7.1.0",
     "lint-staged": "^11.2.4",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.4.1",
     "prop-types": "^15.8.1",
     "react-app-rewired": "^2.1.8",
-    "stylelint-config-standard": "^24.0.0"
+    "stylelint-config-standard": "^24.0.0",
+    "u-admin-cli": "^1.1.3"
   }
 }
