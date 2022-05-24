@@ -2,8 +2,8 @@
 
 name: CI
 
-#env:
-#  CI: false
+env:
+  CI: false
 
 # Controls when the workflow will run
 on:
@@ -42,6 +42,5 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
           FOLDER: build
-          CI: false
       - run: yarn
       - run: yarn build:pre
