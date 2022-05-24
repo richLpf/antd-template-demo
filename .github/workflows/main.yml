@@ -32,4 +32,4 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: master
           FOLDER: docs
-      - run: npm build pre
+      - run: yarn build:pre
