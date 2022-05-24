@@ -21,7 +21,9 @@ const ChartDemo = lazy(() => import("../pages/chart"));
 const AntvDemo = lazy(() => import("../pages/chart/antv"));
 const Debounce = lazy(() => import("../pages//lib/debounce"));
 const Context = lazy(() => import("../pages/hooks/context"));
-// const Gray = lazy(() => import("../pages/gray"));
+const Users = lazy(() => import("../pages/system/User"));
+const Roles = lazy(() => import("../pages/system/Role"));
+const Resources = lazy(() => import("../pages/system/Resource"));
 
 const routes = [
   {
@@ -96,6 +98,28 @@ const routes = [
         name: "Hooks",
         key: "/func/hooks",
         component: <Context />,
+      },
+    ],
+  },
+  {
+    name: formatMessage("DEMO0011"),
+    key: "/system",
+    icon: <SettingOutlined />,
+    children: [
+      {
+        name: formatMessage("DEMO0012"),
+        key: "/system/user",
+        component: <Users />,
+      },
+      {
+        name: formatMessage("DEMO0013"),
+        key: "/system/role",
+        component: <Roles />,
+      },
+      {
+        name: formatMessage("DEMO0014"),
+        key: "/system/resource",
+        component: <Resources />,
       },
     ],
   },

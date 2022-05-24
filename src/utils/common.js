@@ -1,3 +1,4 @@
+import moment from "moment";
 import locale from "../locale.json";
 import { defaultLanguage } from "./const";
 // menu has child
@@ -62,4 +63,8 @@ export const getSessionStorage = (key) => {
   } catch (e) {
     return value;
   }
+};
+
+export const formatTime = (date) => {
+  return date ? moment(date * 1000).format("YYYY-MM-DD HH:mm:ss") : "-";
 };

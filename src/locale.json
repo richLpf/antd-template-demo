@@ -48,5 +48,25 @@
         "key": "DEMO0010",
         "zh_cn": "防抖节流",
         "en_us": "Debounce"
+    },
+    {
+        "key": "DEMO0011",
+        "zh_cn": "权限管理",
+        "en_us": "Users"
+    },
+    {
+        "key": "DEMO0012",
+        "zh_cn": "用户管理",
+        "en_us": "Users"
+    },
+    {
+        "key": "DEMO0013",
+        "zh_cn": "角色管理",
+        "en_us": "Roles"
+    },
+    {
+        "key": "DEMO0014",
+        "zh_cn": "资源管理",
+        "en_us": "Resources"
     }
 ]

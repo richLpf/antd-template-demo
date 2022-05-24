@@ -1,7 +1,10 @@
 import React, { useState, useEffect, Fragment } from "react";
-import { Form, Button, Col, Row } from "antd";
+import { Form, Button, Col, Row, Space } from "antd";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
+import PropTypes from "prop-types";
 import FormItemComponent from "../Form/FormItemComponent.js";
+
+import "./index.less";
 
 export const resetObjectSelect = (object) => {
   return Object.keys(object).map((item) => ({
@@ -74,8 +77,10 @@ function TableFilter(props) {
     Object.keys(data).forEach((item) => {
       if (
         data[item] === "" ||
+        // eslint-disable-next-line no-prototype-builtins
         (Array.prototype.isPrototypeOf(data[item]) &&
           data[item].length === 0) ||
+        // eslint-disable-next-line no-prototype-builtins
         (Object.prototype.isPrototypeOf(data[item]) &&
           Object.keys(data[item]).length === 0)
       ) {
@@ -86,12 +91,7 @@ function TableFilter(props) {
   };
 
   return (
-    <Form
-      form={form}
-      name="advanced_search"
-      style={{ marginBottom: 20 }}
-      onFinish={onFinish}
-    >
+    <Form form={form} name="advanced_search" onFinish={onFinish}>
       {fields && fields.length > 0 && <Row gutter={24}>{getFields()}</Row>}
       <Row>
         <Col span={14}>
@@ -101,14 +101,13 @@ function TableFilter(props) {
               ))
             : null}
         </Col>
-        <Col span={10} style={{ textAlign: "right" }}>
+        <Col span={10} className="table-filter-col">
           {fields && fields.length > 0 && (
-            <span>
-              <Button type="primary" size="small" htmlType="submit">
+            <Space className="table-filter-button-group">
+              <Button type="primary" htmlType="submit" size="small">
                 搜索
               </Button>
               <Button
-                style={{ margin: "0 8px" }}
                 size="small"
                 onClick={() => {
                   form.resetFields();
@@ -120,8 +119,7 @@ function TableFilter(props) {
               {fields && fields.length > count ? (
                 <Button
                   type="link"
-                  size="small"
-                  style={{ padding: "0 4px" }}
+                  style={{ padding: 0 }}
                   onClick={() => {
                     setExpand(!expand);
                   }}
@@ -129,7 +127,7 @@ function TableFilter(props) {
                   {expand ? <UpOutlined /> : <DownOutlined />} 更多
                 </Button>
               ) : null}
-            </span>
+            </Space>
           )}
           {rightActions
             ? rightActions.map((item, index) => <span key={index}>{item}</span>)
@@ -139,4 +137,15 @@ function TableFilter(props) {
     </Form>
   );
 }
+
+TableFilter.propTypes = {
+  fields: PropTypes.array,
+  onSearch: PropTypes.func,
+  rowCount: PropTypes.number,
+  defaultValue: PropTypes.object,
+  leftActions: PropTypes.element,
+  rightActions: PropTypes.element,
+  defaultExpand: PropTypes.bool,
+};
+
 export default TableFilter;

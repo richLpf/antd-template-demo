@@ -68,7 +68,7 @@ function Login() {
               },
             ]}
           >
-            <Input prefix={<UserOutlined />} placeholder="用户名/手机号" />
+            <Input prefix={<UserOutlined />} placeholder="admin" />
           </Form.Item>
           <Form.Item
             name="password"
@@ -83,7 +83,7 @@ function Login() {
             <Input
               prefix={<LockOutlined />}
               type="password"
-              placeholder="请输入登录密码"
+              placeholder="admin"
             />
           </Form.Item>
           <Form.Item>
