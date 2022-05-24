@@ -1,6 +1,7 @@
 {
   "name": "antd-template-project",
   "version": "0.1.1",
+  "homepage": "https://richlpf.github.io/antd-template-demo",
   "private": false,
   "dependencies": {
     "@antv/g2plot": "^2.4.5",
