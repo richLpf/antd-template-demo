@@ -25,8 +25,8 @@ jobs:
 
       - name: ESLintCode
         uses: actions/setup-node@v2
-      - run: yarn
-      - run: yarn global add eslint && eslint ./src/*/**.js
+        run: yarn
+        run: yarn global add eslint && eslint ./src/*/**.js
 
   build:
     needs: check
@@ -45,8 +45,8 @@ jobs:
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: main
-      - run: yarn
-      - run: yarn build:pre
+        run: yarn
+        run: yarn build:pre
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.3.3

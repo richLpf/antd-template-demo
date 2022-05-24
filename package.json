@@ -1,7 +1,7 @@
 {
   "name": "antd-template-project",
   "version": "0.1.1",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@antv/g2plot": "^2.4.5",
     "@rapiop/rapiop": "^2.1.1",
