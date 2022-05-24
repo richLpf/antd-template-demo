@@ -26,7 +26,7 @@ jobs:
         with:
           node-version: '14'
           cache: 'npm'
-      - run: yarn add eslint --global && eslint ./src/*
+      - run: yarn global add eslint && yarn eslint ./src/*
 
   build:
     # The type of runner that the job will run on
