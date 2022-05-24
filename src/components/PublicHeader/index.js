@@ -1,4 +1,5 @@
 import React from "react";
+import "./header.less";
 import { Avatar, Dropdown, Menu, Button, Badge } from "antd";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
@@ -14,7 +15,6 @@ import { languageMap } from "../../utils/const";
 import { toggleScreen } from "../../redux/systemStore";
 import { saveSessionStorage, formatMessage } from "../../utils/common";
 import Image from "../../assets/images/icon.png";
-import "./header.less";
 
 function PublicHeader(props) {
   const { user } = props;
