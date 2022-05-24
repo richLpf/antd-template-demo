@@ -27,7 +27,7 @@ jobs:
           node-version: '14'
           cache: 'npm'
       - run: yarn
-      - run: yarn global add eslint && eslint ./src/*
+      - run: yarn global add eslint && eslint ./src/*/**.js
 
   build:
     # The type of runner that the job will run on
@@ -46,8 +46,8 @@ jobs:
           cache: 'npm'
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: main
-          FOLDER: docs
+          BRANCH: gh-pages
+          FOLDER: build
           CI: false
       - run: yarn
       - run: yarn build:pre
