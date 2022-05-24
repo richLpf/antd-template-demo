@@ -1,4 +1,5 @@
 import React, { useMemo, useEffect } from "react";
+import "./App.less";
 import zhCN from "antd/lib/locale/zh_CN";
 import enUS from "antd/lib/locale/en_US";
 import { ConfigProvider } from "antd";
@@ -8,7 +9,6 @@ import { getSessionStorage } from "./utils/common";
 import { switchLanguage } from "./redux/systemStore";
 import BaseLayout from "./BaseLayout";
 import Login from "./pages/login";
-import "./App.less";
 
 const uiLanguageMap = {
   zh_cn: zhCN,

@@ -1,10 +1,10 @@
 import React from "react";
+import "./index.less";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import "./index.less";
 
 ReactDOM.render(
   <Provider store={store}>

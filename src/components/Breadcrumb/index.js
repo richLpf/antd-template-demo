@@ -4,7 +4,6 @@ import { Link, useLocation } from "react-router-dom";
 import { Breadcrumb } from "antd";
 import routes from "../../router";
 import { formatMessage } from "src/utils/common";
-import "./index.less";
 
 const getRoute = (routes, pathname) => {
   for (let i = 0; i < routes.length; i++) {
