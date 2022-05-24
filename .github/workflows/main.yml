@@ -32,4 +32,6 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: master
           FOLDER: docs
+      - run: pwd
+      - run: yarn
       - run: yarn build:pre
