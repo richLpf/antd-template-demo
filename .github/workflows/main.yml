@@ -19,8 +19,13 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - name: Check
       - uses: actions/checkout@v2
+
+      - name: Check
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'npm'
       - run: yarn add eslint --global && eslint ./src/*
 
   build:
@@ -31,6 +36,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+
       # Runs a single command using the runners shell
       - name: Build
         uses: actions/setup-node@v2
