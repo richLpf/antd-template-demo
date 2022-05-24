@@ -34,4 +34,6 @@ jobs:
           FOLDER: docs
       - run: pwd
       - run: yarn
+        env:
+          CI: false
       - run: yarn build:pre
