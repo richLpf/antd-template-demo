@@ -3,7 +3,7 @@ import zhCN from "antd/lib/locale/zh_CN";
 import enUS from "antd/lib/locale/en_US";
 import { ConfigProvider } from "antd";
 import { useSelector, useDispatch } from "react-redux";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { getSessionStorage } from "./utils/common";
 import { switchLanguage } from "./redux/systemStore";
 import BaseLayout from "./BaseLayout";
@@ -37,12 +37,12 @@ function App() {
   return (
     <div className="App">
       <ConfigProvider locale={getLocale} componentSize={componentSize}>
-        <BrowserRouter>
+        <HashRouter>
           <Routes>
             <Route path="login" element={<Login />} />
             <Route path="*" element={<BaseLayout />} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </ConfigProvider>
     </div>
   );
