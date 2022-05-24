@@ -3,7 +3,6 @@ import { Form, Button, Col, Row, Space } from "antd";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
 import PropTypes from "prop-types";
 import FormItemComponent from "../Form/FormItemComponent.js";
-
 import "./index.less";
 
 export const resetObjectSelect = (object) => {

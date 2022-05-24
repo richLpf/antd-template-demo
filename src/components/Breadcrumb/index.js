@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link, useLocation } from "react-router-dom";
-
 import { Breadcrumb } from "antd";
-
 import routes from "../../router";
 import { formatMessage } from "src/utils/common";
-
 import "./index.less";
 
 const getRoute = (routes, pathname) => {
