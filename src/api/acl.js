@@ -8,6 +8,8 @@ export const CreateResource = (data) => {
   });
 };
 
+export const test = () => {};
+
 export const UpdateResource = (query) => {
   return request({
     url: "/v1/list",
