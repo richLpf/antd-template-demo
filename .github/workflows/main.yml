@@ -28,6 +28,11 @@ jobs:
       - run: yarn
       - run: yarn global add eslint && eslint ./src/*/**.js
 
+      - name: StyleLintCode
+        uses: actions/setup-node@v2
+      - run: yarn
+      - run: yarn global add stylelist && stylelint ./src/*/**.less
+
   build:
     needs: check
     # The type of runner that the job will run on
@@ -48,8 +53,8 @@ jobs:
       - run: yarn
       - run: yarn build:pre
 
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4.3.3
-        with:
-          branch: gh-pages
-          folder: build
+      # - name: Deploy
+        # uses: JamesIves/github-pages-deploy-action@v4.3.3
+        # with:
+          # branch: gh-pages
+          # folder: build
