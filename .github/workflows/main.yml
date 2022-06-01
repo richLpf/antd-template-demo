@@ -26,12 +26,12 @@ jobs:
       - name: ESLintCode
         uses: actions/setup-node@v2
       - run: yarn
-      - run: yarn global add eslint && eslint ./src/*/**.js
+      - run: npx install -g eslint && eslint ./src/*/**.js
 
       - name: StyleLintCode
         uses: actions/setup-node@v2
-      - run: yarn
-      - run: yarn global add stylelist && stylelint ./src/*/**.less
+      # - run: yarn
+      - run: npm install -g stylelint && npx stylelint ./src/*/**.less
 
   Build:
     needs: Check
