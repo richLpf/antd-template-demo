@@ -28,7 +28,7 @@ jobs:
       - run: yarn
       - run: npm install -g eslint && eslint ./src/*/**.js
 
-  Build:
+  Deploy:
     needs: Check
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
