@@ -55,8 +55,12 @@ jobs:
 
   Deploy:
     needs: [ Check, Build ]
-    name: Deploy
-    uses: JamesIves/github-pages-deploy-action@v4.3.3
-    with:
-      branch: gh-pages
-      folder: build
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        with:
+          branch: gh-pages
+          folder: build
