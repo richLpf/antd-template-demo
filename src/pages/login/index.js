@@ -48,9 +48,7 @@ function Login() {
       </div>
       <Card
         title={
-          <div style={{ textAlign: "center", fontSize: 20 }}>
-            自动发布测试平台
-          </div>
+          <div style={{ textAlign: "center", fontSize: 20 }}>自动发布测试</div>
         }
         style={{ width: 400, margin: "220px auto" }}
       >
