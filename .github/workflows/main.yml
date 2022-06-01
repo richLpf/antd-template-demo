@@ -33,7 +33,7 @@ jobs:
       - run: npm install -g stylelint stylelint-less
       - run: mkdir .tmp-css-check && touch .tmp-css-check/.stylelintrc.json && echo '{"plugins":["stylelint-less"],"rules":{}}' >> .tmp-css-check/.stylelintrc.json && stylelint "src/**/*.less" --config .tmp-css-check/.stylelintrc.json --aei
 
-  Build:
+  Deploy:
     needs: Check
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
