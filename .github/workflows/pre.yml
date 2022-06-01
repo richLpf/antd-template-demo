@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: pre-ci
 
 env:
   CI: false
@@ -28,11 +28,6 @@ jobs:
       - run: yarn
       - run: npm install -g eslint && eslint ./src/*/**.js
 
-      - name: StyleLintCode
-        uses: actions/setup-node@v2
-      - run: npm install -g stylelint stylelint-less
-      - run: mkdir .tmp-css-check && touch .tmp-css-check/.stylelintrc.json && echo '{"plugins":["stylelint-less"],"rules":{}}' >> .tmp-css-check/.stylelintrc.json && stylelint "src/**/*.less" --config .tmp-css-check/.stylelintrc.json --aei
-
   Build:
     needs: Check
     # The type of runner that the job will run on
@@ -51,12 +46,6 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: main
       - run: yarn
-      - run: yarn build:prod
-
-      - name: deploy
-        uses: JamesIves/github-pages-deploy-action@v4.3.3
-        with:
-          branch: gh-pages
-          folder: build
+      - run: yarn build:pre
 
      
