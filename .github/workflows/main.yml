@@ -61,6 +61,7 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
+      - run: ls -al
 
       - name: deploy
         uses: JamesIves/github-pages-deploy-action@v4.3.3
