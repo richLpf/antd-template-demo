@@ -13,8 +13,8 @@
     "static/js/3.58f05d66.chunk.js": "/antd-template-demo/static/js/3.58f05d66.chunk.js",
     "static/js/3.58f05d66.chunk.js.map": "/antd-template-demo/static/js/3.58f05d66.chunk.js.map",
     "main.css": "/antd-template-demo/static/css/main.f5790ef8.chunk.css",
-    "main.js": "/antd-template-demo/static/js/main.d2624f2c.chunk.js",
-    "main.js.map": "/antd-template-demo/static/js/main.d2624f2c.chunk.js.map",
+    "main.js": "/antd-template-demo/static/js/main.95ed2201.chunk.js",
+    "main.js.map": "/antd-template-demo/static/js/main.95ed2201.chunk.js.map",
     "runtime-main.js": "/antd-template-demo/static/js/runtime-main.f1c38ea4.js",
     "runtime-main.js.map": "/antd-template-demo/static/js/runtime-main.f1c38ea4.js.map",
     "static/css/6.4c65898e.chunk.css": "/antd-template-demo/static/css/6.4c65898e.chunk.css",
@@ -79,6 +79,6 @@
     "static/css/6.4c65898e.chunk.css",
     "static/js/6.c60633e9.chunk.js",
     "static/css/main.f5790ef8.chunk.css",
-    "static/js/main.d2624f2c.chunk.js"
+    "static/js/main.95ed2201.chunk.js"
   ]
 }
