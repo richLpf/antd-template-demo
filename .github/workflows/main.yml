@@ -30,8 +30,8 @@ jobs:
 
       - name: StyleLintCode
         uses: actions/setup-node@v2
-      # - run: yarn
-      - run: mkdir .tmp-css-check && touch .tmp-css-check/.stylelintrc.json && echo '{"plugins":["stylelint-less"],"rules":{}}' >> .tmp-css-check/.stylelintrc.json && ./node_modules/.bin/stylelint "src/**/*.less" --config .tmp-css-check/.stylelintrc.json --aei
+      - run: npm install -g stylelint stylelint-less
+      - run: mkdir .tmp-css-check && touch .tmp-css-check/.stylelintrc.json && echo '{"plugins":["stylelint-less"],"rules":{}}' >> .tmp-css-check/.stylelintrc.json && stylelint "src/**/*.less" --config .tmp-css-check/.stylelintrc.json --aei
 
   Build:
     needs: Check
