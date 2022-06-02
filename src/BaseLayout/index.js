@@ -89,9 +89,14 @@ function BaseLayout() {
     <Layout style={{ minHeight: "100vh" }}>
       <PublicHeader user={username} />
       <Layout className="site-layout">
-        <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
+        <Sider
+          collapsible
+          collapsed={collapsed}
+          style={{ background: "#fff" }}
+          onCollapse={onCollapse}
+        >
           <Menu
-            theme="dark"
+            theme="light"
             selectedKeys={selectedKeys}
             mode="inline"
             onSelect={onChangeMenu}

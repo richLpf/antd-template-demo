@@ -14,7 +14,7 @@ import {
 import { languageMap } from "../../utils/const";
 import { toggleScreen } from "../../redux/systemStore";
 import { saveSessionStorage, formatMessage } from "../../utils/common";
-import Image from "../../assets/images/icon.png";
+// import Image from "../../assets/images/icon.png";
 
 function PublicHeader(props) {
   const { user } = props;
@@ -72,10 +72,7 @@ function PublicHeader(props) {
 
   return (
     <div className="public-header">
-      <div className="logo">
-        <img src={Image} />
-        {formatMessage("DEMO0002")}
-      </div>
+      <div className="logo">{formatMessage("DEMO0002")}</div>
       <Dropdown overlay={menu} placement="bottomRight" arrow>
         <div className="avatar-user">
           <Avatar className="avatar" size={28} icon={<UserOutlined />} />

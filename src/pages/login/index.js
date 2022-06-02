@@ -20,7 +20,7 @@ function Login() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      window.location.href = "/";
+      window.location.href = "#";
     }, 1000);
   };
 
