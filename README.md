@@ -24,9 +24,10 @@
     - [x] 全屏展示
     - [x] 组件型号切换(暂时没有配置入口)
     - [ ] 换肤效果切换
-- [ ] 工作台
+- [x] 页面导航指引
+- [x] 工作台
     - [ ] 常见工作台
-    - [ ] 拖拽工作台
+    - [x] 拖拽工作台
 - [ ] 权限系统
 - [ ] 切换页面页面meta跟着改变
 - [ ] Mock数据生成和导出
@@ -45,7 +46,6 @@
     - [x] 防抖/节流
     - [ ] 千分位过滤
 - [ ] 灰度系统
-- [ ] 引导页
 - [ ] 集成bash编辑器
 - [ ] 通过API生成表格组件
 - [ ] 路由权限设计
@@ -57,6 +57,9 @@
 - [ ] 换肤效果
 - [ ] 表格筛选
 - [ ] 页面过长回到顶部
+- [ ] 自动化部署
+  - [ ] Github CI/CD
+  - [ ] shell
 - [ ] 前端工程化
     - [ ] 规范
     - [ ] 监控
@@ -132,6 +135,7 @@ yarn start
 - 开发阶段在eslint编译不通过会阻止程序运行，如何处理？
 https://stackoverflow.com/questions/64518226/my-create-react-app-is-failing-to-compile-due-to-eslint-error
 - screenfull编译报错，使用5.1.0版本
+
 
 ## 九、优秀的demo项目整理
 - [react-antd-admin](https://nlrx.gitee.io/react-antd-admin-template/#/dashboard)

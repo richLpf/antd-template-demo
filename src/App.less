@@ -96,3 +96,70 @@
   background: #fff!important;
   color: rgba(0,0,0,.85) !important;
 }
+
+.workbench-mark {
+  cursor: move;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  z-index: 10;
+  border-radius: 16px;
+  text-align: center;
+  >div {
+      position: absolute;
+      top: 50%;
+      transform: translate(0,-50%);
+      font-size: 20px;
+      width: 100%;
+      text-align: center;
+      display: none;
+      color: gray;
+      font-weight: bold;
+      >p {
+          margin: 0;
+      }
+      .anticon {
+          margin-right: 5px;
+      }
+  }
+}
+.workbench-mark:hover {
+  background: #ffffffcc;
+      >div {
+          display: block;
+      }
+}
+
+.drag-container-card {
+  width: 100%!important;
+}
+
+.remove{
+  position: absolute;
+  right: -12px;
+  top: -18px;
+  cursor: pointer;
+  z-index: 999;
+  display: none;
+  font-size: 24px;
+  color: #999;
+}
+/* .react-grid-item{
+  border: 1px solid #ececec;
+} */
+
+.react-grid-item:hover .remove{
+  display:inline-block;
+}
+
+.react-resizable-handle{
+  visibility: hidden;
+}
+
+.react-grid-item:hover .react-resizable-handle{
+  visibility: visible;
+}

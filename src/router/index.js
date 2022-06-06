@@ -9,12 +9,8 @@ import {
 } from "@ant-design/icons";
 import { formatMessage } from "src/utils/common";
 
-const Dashboard = lazy(() => import("../pages/dashboard"));
-// const Dodder = lazy(() => import("../pages/fodder"));
-// const Template = lazy(() => import("../pages/template"));
-// const CreateTemplate = lazy(() => import("../pages/template/create-form"));
-// const Message = lazy(() => import("../pages/message/send-task"));
-// const Business = lazy(() => import("../pages/business"));
+const Dashboard = lazy(() => import("../pages/dashboard/workbench"));
+// const SetWorkbench = lazy(() => import("../pages/dashboard/setWorkbench"));
 const Table = lazy(() => import("../pages/table"));
 const Widget = lazy(() => import("../pages/widgets"));
 const ChartDemo = lazy(() => import("../pages/chart"));
@@ -32,6 +28,12 @@ const routes = [
     icon: <DesktopOutlined />,
     component: <Dashboard />,
   },
+  // {
+  // key: "/workbench/setting",
+  // name: "Dashboard",
+  // hidden: true,
+  // component: <SetWorkbench />
+  // },
   {
     name: formatMessage("DEMO0003"),
     key: "/widget",

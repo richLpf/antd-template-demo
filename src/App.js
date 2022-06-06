@@ -8,6 +8,7 @@ import { getSessionStorage } from "./utils/common";
 import { switchLanguage } from "./redux/systemStore";
 import BaseLayout from "./BaseLayout";
 import Login from "./pages/login";
+import SetWorkbench from "./pages/dashboard/setWorkbench";
 
 const uiLanguageMap = {
   zh_cn: zhCN,
@@ -40,6 +41,7 @@ function App() {
         <HashRouter>
           <Routes>
             <Route path="login" element={<Login />} />
+            <Route path="/workbench/setting" element={<SetWorkbench />} />
             <Route path="*" element={<BaseLayout />} />
           </Routes>
         </HashRouter>
