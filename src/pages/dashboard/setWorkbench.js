@@ -4,7 +4,7 @@ import {
   Checkbox,
   Row,
   Col,
-  PageHeader,
+  Card,
   Button,
   message,
   Select,
@@ -318,7 +318,7 @@ function SetWorkbench() {
           </Row>
         </Checkbox.Group>
       </Drawer>
-      <PageHeader
+      <Card
         style={{ marginLeft: 200 }}
         title="自定义工作台"
         subTitle={

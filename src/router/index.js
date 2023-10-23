@@ -15,11 +15,14 @@ const Table = lazy(() => import("../pages/table"));
 const Widget = lazy(() => import("../pages/widgets"));
 const ChartDemo = lazy(() => import("../pages/chart"));
 const AntvDemo = lazy(() => import("../pages/chart/antv"));
-const Debounce = lazy(() => import("../pages//lib/debounce"));
+const Debounce = lazy(() => import("../pages/lib/debounce"));
 const Context = lazy(() => import("../pages/hooks/context"));
 const Users = lazy(() => import("../pages/system/User"));
 const Roles = lazy(() => import("../pages/system/Role"));
 const Resources = lazy(() => import("../pages/system/Resource"));
+const Formik = lazy(() => import("../pages/form/formik"));
+// const FormikHook = lazy(() => import("../pages/form/formik/useFormik"));
+// const FormikField = lazy(() => import("../pages/form/formik/field"));
 
 const routes = [
   {
@@ -53,7 +56,18 @@ const routes = [
     key: "/form",
     hidden: false,
     icon: <SettingOutlined />,
-    component: <Table />,
+    children: [
+      {
+        name: "form",
+        key: "/form/demo",
+        component: <Table />,
+      },
+      {
+        name: "formik",
+        key: "/form/formik",
+        component: <Formik />,
+      },
+    ],
   },
   {
     name: formatMessage("DEMO0006"),

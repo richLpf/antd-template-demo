@@ -31,7 +31,7 @@ function App() {
     if (localeComponentSize && componentSize !== localeComponentSize) {
       dispatch();
     }
-  }, []);
+  }, [componentSize, dispatch, locale]);
 
   const getLocale = useMemo(() => uiLanguageMap[locale], [locale]);
 

@@ -63,10 +63,6 @@ const UTable = forwardRef((props, ref) => {
     PageSize: 10,
   });
 
-  useEffect(() => {
-    fetchData({ ...toQueryParams() });
-  }, []);
-
   const fetchData = useCallback(
     async (data) => {
       console.log("fetchData", data);
@@ -89,31 +85,6 @@ const UTable = forwardRef((props, ref) => {
       );
     },
     [query]
-  );
-
-  useEffect(() => {
-    const defaultColumns = columns;
-    const storeColumns = getLocalStorage(storeKey);
-
-    if (storeColumns) {
-      setTableColumns(
-        columns.filter((item) => (storeColumns || []).includes(item.key))
-      );
-      return;
-    }
-
-    setTableColumns(defaultColumns);
-    // eslint-disable-next-line
-  }, [columns]);
-
-  // 暴露接口调用和表格数据给父组件
-  useImperativeHandle(
-    ref,
-    () => ({
-      fetchData: () => fetchData({ ...toQueryParams() }),
-      data: Data,
-    }),
-    [Data, fetchData]
   );
 
   const toQueryParams = useCallback(
@@ -141,6 +112,35 @@ const UTable = forwardRef((props, ref) => {
   );
 
   useEffect(() => {
+    fetchData({ ...toQueryParams() });
+  }, [fetchData, toQueryParams]);
+
+  useEffect(() => {
+    const defaultColumns = columns;
+    const storeColumns = getLocalStorage(storeKey);
+
+    if (storeColumns) {
+      setTableColumns(
+        columns.filter((item) => (storeColumns || []).includes(item.key))
+      );
+      return;
+    }
+
+    setTableColumns(defaultColumns);
+    // eslint-disable-next-line
+  }, [columns]);
+
+  // 暴露接口调用和表格数据给父组件
+  useImperativeHandle(
+    ref,
+    () => ({
+      fetchData: () => fetchData({ ...toQueryParams() }),
+      data: Data,
+    }),
+    [Data, fetchData, toQueryParams]
+  );
+
+  useEffect(() => {
     // 外部搜索
     console.log(throttleRef.current);
     throttleRef.current(
@@ -148,7 +148,7 @@ const UTable = forwardRef((props, ref) => {
       pagination.PageSize || 10,
       useBackendPagination
     );
-  }, [filterParams]);
+  }, [filterParams, pagination, useBackendPagination]);
 
   const handleDownload = async () => {
     let dataSource = Data;
@@ -179,12 +179,15 @@ const UTable = forwardRef((props, ref) => {
   };
 
   // 分页切换
-  const onChange = useCallback((Page, PageSize, pagination) => {
-    setPagination({ ...pagination, Page, PageSize });
-    if (useBackendPagination) {
-      fetchData({ FuzzySearch, Page, PageSize });
-    }
-  }, []);
+  const onChange = useCallback(
+    (Page, PageSize, pagination) => {
+      setPagination({ ...pagination, Page, PageSize });
+      if (useBackendPagination) {
+        fetchData({ FuzzySearch, Page, PageSize });
+      }
+    },
+    [FuzzySearch, fetchData, useBackendPagination]
+  );
 
   const getList = (Page, PageSize, fetchCondition) => {
     setPagination({ Page, PageSize });

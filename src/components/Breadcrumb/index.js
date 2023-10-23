@@ -28,7 +28,8 @@ function UBreadcrumb({ routeChange }) {
     }
 
     routeChange && routeChange(location.pathname);
-  }, [location.pathname]);
+    // eslint-disable-next-line
+  }, [location]);
 
   return (
     <Breadcrumb className="layout-breadcrumb">

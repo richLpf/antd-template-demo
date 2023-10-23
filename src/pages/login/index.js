@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Input, Button, Card, PageHeader, Row, Col } from "antd";
+import { Form, Input, Button, Card, Row, Col } from "antd";
 import {
   UserOutlined,
   LockOutlined,
@@ -29,7 +29,7 @@ function Login() {
   return (
     <>
       <div style={{ background: "#fff", display: "none" }}>
-        <PageHeader
+        <Card
           style={{ width: "80%", margin: "0 auto" }}
           ghost={false}
           title="5G 信息"
@@ -44,7 +44,7 @@ function Login() {
               注册
             </Button>,
           ]}
-        ></PageHeader>
+        ></Card>
       </div>
       <Card
         title={

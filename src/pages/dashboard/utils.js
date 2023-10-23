@@ -118,6 +118,8 @@ export const showComponent = (val) => {
       return <MyFavorite />;
     case "Company":
       return <Company />;
+    default:
+      return <></>;
   }
 };
 
@@ -135,6 +137,8 @@ export const showComponentTip = (val) => {
       return "添加常用网站，减少冗余书签收藏";
     case "Company":
       return "添加关注公司，获取一手资源资讯";
+    default:
+      return "";
   }
 };
 
