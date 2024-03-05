@@ -1,6 +1,6 @@
-export const itemOption = ({ roleList }) => [
+export const itemOption = ({ roleList, editInfo }) => [
   {
-    name: "Name",
+    name: "name",
     label: "英文名",
     content: "Input",
     rules: {
@@ -8,7 +8,7 @@ export const itemOption = ({ roleList }) => [
     },
   },
   {
-    name: "ChName",
+    name: "username",
     label: "中文名",
     content: "Input",
     rules: {
@@ -16,15 +16,15 @@ export const itemOption = ({ roleList }) => [
     },
   },
   {
-    name: "Phone",
-    label: "电话号码",
+    name: "password",
+    label: "密码",
     content: "Input",
     rules: {
-      required: true,
+      required: editInfo && Object.keys(editInfo).length ? false : true,
     },
   },
   {
-    name: "RoleID",
+    name: "role_ids",
     label: "角色",
     rules: {
       required: true,
@@ -34,8 +34,8 @@ export const itemOption = ({ roleList }) => [
     option: {
       required: true,
       list: roleList,
-      label: "Name",
-      value: "ID",
+      label: "name",
+      value: "id",
     },
     allowClear: true,
     mode: "multiple",

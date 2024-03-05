@@ -140,15 +140,15 @@ const UTable = forwardRef((props, ref) => {
     [Data, fetchData, toQueryParams]
   );
 
-  useEffect(() => {
-    // 外部搜索
-    console.log(throttleRef.current);
-    throttleRef.current(
-      pagination.Page,
-      pagination.PageSize || 10,
-      useBackendPagination
-    );
-  }, [filterParams, pagination, useBackendPagination]);
+  // useEffect(() => {
+  //   // 外部搜索
+  //   console.log(throttleRef.current);
+  //   throttleRef.current(
+  //     pagination.Page,
+  //     pagination.PageSize || 10,
+  //     useBackendPagination
+  //   );
+  // }, [filterParams, pagination, useBackendPagination]);
 
   const handleDownload = async () => {
     let dataSource = Data;

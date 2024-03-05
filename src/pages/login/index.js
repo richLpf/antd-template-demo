@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import { Form, Input, Button, Card, Row, Col } from "antd";
-import {
-  UserOutlined,
-  LockOutlined,
-  VerifiedOutlined,
-} from "@ant-design/icons";
-import code from "../../assets/images/code.png";
+import { Form, Input, Button, Card } from "antd";
+import Cookies from "js-cookie";
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { Login as LoginApi } from "../../api";
 
 function Login() {
   const [loading, setLoading] = useState(false);
@@ -18,38 +15,28 @@ function Login() {
   const toLogin = (data) => {
     sessionStorage.setItem("username", data.username);
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      window.location.href = "#";
-    }, 1000);
+    LoginApi({
+      name: data.username,
+      password: data.password,
+    })
+      .then((res) => {
+        if (res.code === 0) {
+          Cookies.set("jwtToken", res.data.token, { expires: 1 });
+          Cookies.set("userId", res.data.id, { expires: 1 });
+          window.location.href = "/";
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log("err", err);
+        setLoading(false);
+      });
   };
-
-  const toRegister = () => {};
 
   return (
     <>
-      <div style={{ background: "#fff", display: "none" }}>
-        <Card
-          style={{ width: "80%", margin: "0 auto" }}
-          ghost={false}
-          title="5G 信息"
-          subTitle="5G 信息，不一样的短信"
-          extra={[
-            <Button
-              key="1"
-              type="primary"
-              size="small"
-              onClick={() => toRegister()}
-            >
-              注册
-            </Button>,
-          ]}
-        ></Card>
-      </div>
       <Card
-        title={
-          <div style={{ textAlign: "center", fontSize: 20 }}>自动发布测试</div>
-        }
+        title={<div style={{ textAlign: "center", fontSize: 20 }}>登陆</div>}
         style={{ width: 400, margin: "220px auto" }}
       >
         <Form
@@ -86,7 +73,7 @@ function Login() {
               placeholder="admin"
             />
           </Form.Item>
-          <Form.Item>
+          {/* <Form.Item>
             <Row gutter={8}>
               <Col span={16}>
                 <Form.Item
@@ -110,7 +97,7 @@ function Login() {
                 <img className="code-png" src={code} alt="验证码" />
               </Col>
             </Row>
-          </Form.Item>
+          </Form.Item> */}
           <Form.Item>
             <Button
               type="primary"

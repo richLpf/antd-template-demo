@@ -6,39 +6,34 @@ import TagsMore from "src/components/TagsMore";
 const Columns = ({ handleEdit, handleDelete }) => [
   {
     title: "ID",
-    dataIndex: "ID",
-    key: "ID",
+    dataIndex: "id",
+    key: "id",
   },
   {
     title: "中文名",
-    dataIndex: "ChName",
-    key: "ChName",
+    dataIndex: "username",
+    key: "username",
   },
   {
     title: "用户名",
-    dataIndex: "Name",
-    key: "Name",
+    dataIndex: "name",
+    key: "name",
   },
   {
     title: "角色名称",
-    dataIndex: "RoleInfo",
-    key: "RoleInfo",
+    dataIndex: "roles",
+    key: "roles",
     render: (val) =>
       val && val.length ? (
-        <TagsMore list={val.map((item) => item.RoleName)} />
+        <TagsMore list={val.map((item) => item.role_name)} />
       ) : (
         ""
       ),
   },
   {
-    title: "邮箱",
-    dataIndex: "Email",
-    key: "Email",
-  },
-  {
     title: "创建时间",
-    dataIndex: "CreateTime",
-    key: "CreateTime",
+    dataIndex: "created_at",
+    key: "created_at",
     sorter: true,
     render: (val) => formatTime(val),
   },

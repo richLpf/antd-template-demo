@@ -1,4 +1,10 @@
-import React, { Fragment, useState, useEffect, useRef } from "react";
+import React, {
+  Fragment,
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+} from "react";
 import { Button, message, Space, Card } from "antd";
 import Columns from "./Columns";
 import UTable from "src/components/UTable";
@@ -14,6 +20,11 @@ import TableFilter from "src/components/TableFilter";
 import Filter from "./Filter";
 import { itemOption } from "./FormItem";
 
+const pageQuery = {
+  limit: 10,
+  offset: 0,
+};
+
 function User() {
   const [visible, setVisible] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
@@ -22,17 +33,8 @@ function User() {
   const [FilterParams, setFilterParams] = useState({});
   const tableRef = useRef();
 
-  useEffect(() => {
-    getRole();
-  }, []);
-
-  const handleEdit = (record) => {
-    setEditInfo(record);
-    setVisible(true);
-  };
-
-  const getRole = () => {
-    GetRoleList()
+  const getRole = useCallback(() => {
+    GetRoleList(pageQuery)
       .then((res) => {
         const { Data } = res;
         setRoleList(Data || []);
@@ -40,12 +42,20 @@ function User() {
       .catch((err) => {
         console.log("err", err);
       });
+  }, []);
+
+  useEffect(() => {
+    getRole();
+  }, [getRole]);
+
+  const handleEdit = (record) => {
+    setEditInfo(record);
+    setVisible(true);
   };
 
   const HandleCreateUser = (params) => {
     CreateUser(params)
       .then((res) => {
-        console.log("res", res);
         setConfirmLoading(false);
         message.success("新增成功");
         setVisible(false);
@@ -60,7 +70,6 @@ function User() {
   const HandleUpdateUser = (params) => {
     UpdateUser(params)
       .then((res) => {
-        console.log("res", res);
         setConfirmLoading(false);
         setVisible(false);
         setEditInfo({});
@@ -72,10 +81,9 @@ function User() {
   };
 
   const handleOk = (val) => {
-    console.log("val", val);
     setConfirmLoading(true);
     if (editInfo && Object.keys(editInfo).length) {
-      HandleUpdateUser({ ...val, UserID: editInfo.ID });
+      HandleUpdateUser({ ...val, id: editInfo.id });
     } else {
       HandleCreateUser(val);
     }
@@ -89,7 +97,7 @@ function User() {
     if (data && Object.keys(data).length) {
       return {
         ...data,
-        RoleID: data?.RoleInfo?.map((item) => item.RoleID),
+        role_ids: data?.roles?.map((item) => item.role_id),
       };
     }
   };
@@ -101,7 +109,6 @@ function User() {
   };
 
   const onSearch = (value) => {
-    console.log("value", value);
     setFilterParams(value);
   };
 
@@ -118,7 +125,7 @@ function User() {
         />
       </Card>
       <UTable
-        rowKey="ID"
+        rowKey="id"
         ref={tableRef}
         columns={Columns({ handleEdit, handleDelete })}
         useReloadButton
@@ -137,7 +144,7 @@ function User() {
       {visible ? (
         <FormModal
           initialValues={initialValues(editInfo)}
-          itemOption={itemOption({ roleList })}
+          itemOption={itemOption({ roleList, editInfo })}
           visible={visible}
           cancel={() => setVisible(false)}
           handleOk={handleOk}

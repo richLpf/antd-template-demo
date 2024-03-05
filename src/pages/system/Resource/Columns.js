@@ -5,38 +5,28 @@ import { formatTime } from "src/utils/common";
 const Columns = ({ handleEdit, handleDelete }) => [
   {
     title: "ID",
-    dataIndex: "ID",
-    key: "ID",
+    dataIndex: "id",
+    key: "id",
   },
   {
     title: "类型",
-    dataIndex: "Category",
-    key: "Category",
+    dataIndex: "type",
+    key: "type",
   },
   {
-    title: "资源名称",
-    dataIndex: "Name",
-    key: "Name",
+    title: "权限标识",
+    dataIndex: "key",
+    key: "key",
   },
   {
-    title: "资源标识",
-    dataIndex: "Resource",
-    key: "Resource",
-  },
-  {
-    title: "描述",
-    dataIndex: "Description",
-    key: "Description",
-  },
-  {
-    title: "创建人",
-    dataIndex: "CreateBy",
-    key: "CreateBy",
+    title: "权限描述",
+    dataIndex: "desc",
+    key: "desc",
   },
   {
     title: "创建时间",
-    dataIndex: "CreateTime",
-    key: "CreateTime",
+    dataIndex: "created_at",
+    key: "created_at",
     render: (val) => formatTime(val),
   },
   {

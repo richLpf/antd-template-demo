@@ -6,7 +6,7 @@ export const hasChild = (routes) => {
   return Array.isArray(routes.children) && routes.children.length > 0;
 };
 
-export function debounce(cb, wait = 1000) {
+export function debounce(cb, wait = 2000) {
   let timer = null;
   return (...args) => {
     if (timer) clearTimeout(timer);

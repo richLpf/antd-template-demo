@@ -10,8 +10,6 @@ import {
   FormControl,
 } from "@mui/material";
 
-const options = ["Ten", "Twenty", "Thirty"];
-
 const MyTextInput = ({ options, formik, ...props }) => {
   return (
     <>

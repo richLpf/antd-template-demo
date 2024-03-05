@@ -3,6 +3,7 @@
   "version": "0.1.1",
   "homepage": "https://richlpf.github.io/antd-template-demo",
   "private": false,
+  "license": "MIT",
   "dependencies": {
     "@antv/g2plot": "^2.4.5",
     "@emotion/react": "^11.11.1",
@@ -17,6 +18,7 @@
     "apexcharts": "^3.32.0",
     "axios": "^0.24.0",
     "formik": "^2.4.5",
+    "js-cookie": "^3.0.5",
     "json2csv": "^5.0.6",
     "moment": "^2.29.4",
     "monaco-editor": "^0.31.1",
@@ -36,8 +38,8 @@
     "yup": "^1.3.2"
   },
   "scripts": {
-    "start": "npm-run-all --parallel start:*",
-    "start:main": "cross-env REACT_APP_ENV=production react-app-rewired start",
+    "start:all": "npm-run-all --parallel start:*",
+    "start": "cross-env REACT_APP_ENV=development react-app-rewired start",
     "start:mock": "u-admin-cli mock -t restful",
     "build:pre": "cross-env REACT_APP_ENV=development react-app-rewired build",
     "build:prod": "cross-env REACT_APP_ENV=production react-app-rewired build",

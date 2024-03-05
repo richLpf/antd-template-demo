@@ -1,20 +1,20 @@
 export const filterInitialValues = {};
 export const itemOption = () => [
   {
-    name: "Resource",
-    label: "资源标识",
+    name: "key",
+    label: "英文资源标识",
     content: "Input",
     rules: {
       required: true,
     },
   },
   {
-    name: "Name",
-    label: "资源名称",
+    name: "type",
+    label: "权限类型",
     content: "Input",
   },
   {
-    name: "Description",
+    name: "desc",
     label: "描述",
     content: "Textarea",
   },

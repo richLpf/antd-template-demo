@@ -8,6 +8,7 @@ export const systemStoreSlice = createSlice({
     language: defaultLanguage,
     isScreenFull: false,
     componentSize: "default",
+    permission: [],
   },
   reducers: {
     switchLanguage: (state, action) => {
@@ -20,9 +21,13 @@ export const systemStoreSlice = createSlice({
     switchComponentSize: (state, action) => {
       state.componentSize = action.payload;
     },
+    savePermission: (state, action) => {
+      state.permission = action.payload;
+    },
   },
 });
 
-export const { switchLanguage, toggleScreen } = systemStoreSlice.actions;
+export const { switchLanguage, toggleScreen, savePermission } =
+  systemStoreSlice.actions;
 
 export default systemStoreSlice.reducer;

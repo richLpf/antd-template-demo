@@ -8,7 +8,7 @@ export const itemOption = ({
   handleChange,
 }) => [
   {
-    name: "nameCn",
+    name: "name",
     label: "角色名称",
     content: "Input",
     rules: {
@@ -16,20 +16,20 @@ export const itemOption = ({
     },
   },
   {
-    name: "name",
-    label: "角色标识",
+    name: "key",
+    label: "英文角色标识",
     content: "Input",
     rules: {
       required: true,
     },
   },
   {
-    name: "describe",
+    name: "desc",
     label: "描述",
     content: "Textarea",
   },
   {
-    name: "resourceIds",
+    name: "permissions",
     label: "资源",
     rules: {
       required: true,

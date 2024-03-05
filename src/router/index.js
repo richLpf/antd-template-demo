@@ -20,6 +20,8 @@ const Context = lazy(() => import("../pages/hooks/context"));
 const Users = lazy(() => import("../pages/system/User"));
 const Roles = lazy(() => import("../pages/system/Role"));
 const Resources = lazy(() => import("../pages/system/Resource"));
+const Test = lazy(() => import("../pages/system/Test"));
+const Page = lazy(() => import("../pages/system/Test/page"));
 const Formik = lazy(() => import("../pages/form/formik"));
 // const FormikHook = lazy(() => import("../pages/form/formik/useFormik"));
 // const FormikField = lazy(() => import("../pages/form/formik/field"));
@@ -136,6 +138,16 @@ const routes = [
         name: formatMessage("DEMO0014"),
         key: "/system/resource",
         component: <Resources />,
+      },
+      {
+        key: "/permission",
+        name: "Permission",
+        component: <Test />,
+      },
+      {
+        key: "/page",
+        name: "Page",
+        component: <Page />,
       },
     ],
   },

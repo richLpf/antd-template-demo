@@ -1,9 +1,9 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect, useRef } from "react";
 import Columns from "./Columns";
 import UTable from "src/components/UTable";
 import FormModal from "src/components/UForm/FormModal";
 import { Button, Card } from "antd";
-import { GetRoleList } from "src/api/acl";
+import { GetRoleList, GetResources, CreateRole } from "src/api/acl";
 import { itemOption, filterInitialValues } from "./FormItem";
 import TableFilter from "src/components/TableFilter";
 import Filter from "./Filter";
@@ -17,6 +17,8 @@ function Role() {
   const [selectedKeys, setSelectedKeys] = useState([]);
   const [isNew, setIsNew] = useState(true);
   const [initialValues, setInitialValues] = useState({});
+
+  const tableRef = useRef();
 
   useEffect(() => {
     getResource();
@@ -44,16 +46,18 @@ function Role() {
 
   const getResource = () => {
     setLoading(true);
-    setResource([]);
-    // Api.GetAllResource()
-    // .then((res) => {
-    // const { rows } = res.Data;
-    // setResource(rows);
-    // setLoading(false);
-    // })
-    // .catch((err) => {
-    // console.log("err", err);
-    // });
+    GetResources({
+      limit: 9999,
+      offset: 0,
+    })
+      .then((res) => {
+        const { Data } = res;
+        setResource(Data || []);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
   };
 
   // const categoryMapInfo = {
@@ -63,14 +67,10 @@ function Role() {
   // menu: '目录'
   // };
 
-  const getResourceName = ({ category, nameCn }) => {
-    return category ? `${nameCn}` : nameCn;
-  };
-
   const rewritePermissions = resource.map((x) => {
     return {
       key: x.id,
-      name: getResourceName(x),
+      name: `${x.key} + (${x.type})`,
     };
   });
   const getRoleById = () => {
@@ -83,13 +83,17 @@ function Role() {
     // });
   };
 
-  const addRole = () => {
+  const addRole = (data) => {
     setConfirmLoading(true);
-    // Api.createRoles(data).then((res) => {
-    // setConfirmLoading(false);
-    // setVisible(false);
-    // getRole();
-    // });
+    CreateRole(data)
+      .then((res) => {
+        setConfirmLoading(false);
+        setVisible(false);
+        tableRef.current && tableRef.current.fetchData();
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
   };
 
   const updateRole = () => {
@@ -102,6 +106,7 @@ function Role() {
   };
 
   const handleOk = (val) => {
+    console.log("isNew", isNew, val);
     if (isNew) {
       addRole(val);
     } else {
@@ -135,7 +140,8 @@ function Role() {
         />
       </Card>
       <UTable
-        rowKey="ID"
+        rowKey="id"
+        ref={tableRef}
         columns={Columns({ handleEdit })}
         useReloadButton
         leftAction={

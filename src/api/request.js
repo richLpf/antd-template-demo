@@ -1,15 +1,11 @@
 import { message } from "antd";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const config = {};
-if (process.env.REACT_APP_ENV !== "development") {
-  config.baseURL = process.env.REACT_APP_API;
-}
-
-const userInfo = {
-  username: "user",
-  token: "123456",
-};
+// if (process.env.REACT_APP_ENV !== "development") {
+config.baseURL = process.env.REACT_APP_API_URL;
+// }
 
 function request(params) {
   return new Promise((resolve, reject) => {
@@ -26,11 +22,9 @@ function request(params) {
 
     instance.interceptors.request.use(
       (config) => {
-        if (userInfo.token) {
-          config.headers.token = userInfo.token;
-        }
-        if (userInfo.username) {
-          config.headers.remote_user = userInfo.username;
+        const jwtToken = Cookies.get("jwtToken");
+        if (jwtToken) {
+          config.headers.Authorization = jwtToken;
         }
         return config;
       },
@@ -51,18 +45,24 @@ function request(params) {
     instance(params)
       .then((res) => {
         const {
-          data: { RetCode, Message },
+          data: { code, message: Message },
           data,
         } = res;
-        if (RetCode === 10000) {
+        if (code === 10000) {
           message.error("请登陆");
           window.location.replace("/login");
           return;
-        } else if (RetCode !== 0) {
+        } else if (code !== 0) {
           message.error(Message);
           resolve(data);
         } else {
-          resolve(data);
+          resolve({
+            ...data,
+            RetCode: data.code || data.status,
+            Data: data.data,
+            Message: data.message,
+            Total: data.count,
+          });
         }
       })
       .catch((err) => {
